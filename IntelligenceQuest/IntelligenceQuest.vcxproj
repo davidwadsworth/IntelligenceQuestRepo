@@ -109,12 +109,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Third Party\SDL2\include;$(SolutionDir)\Third Party\SDL2_image\include;$(SolutionDir)\Third Party\SDL2_mixer-2.0.2\include;$(SolutionDir)\Third Party\SDL2_ttf\include;$(SolutionDir)\Third Party\rapidxml;$(SolutionDir)\Third Party\glm\glm;$(SolutionDir)\Third Party\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ThirdParty\SDL2\include;$(SolutionDir)\ThirdParty\SDL2_image\include;$(SolutionDir)\ThirdParty\SDL2_mixer-2.0.2\include;$(SolutionDir)\ThirdParty\SDL2_ttf\include;$(SolutionDir)\ThirdParty\rapidxml;$(SolutionDir)\ThirdParty\glm\glm;$(SolutionDir)\ThirdParty\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\Third Party\SDL2\lib\x64;$(SolutionDir)\Third Party\SDL2_image\lib\x64;$(SolutionDir)\Third Party\SDL2_mixer-2.0.2\lib\x64;$(SolutionDir)\Third Party\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\SDL2\lib\x64;$(SolutionDir)\ThirdParty\SDL2_image\lib\x64;$(SolutionDir)\ThirdParty\SDL2_mixer-2.0.2\lib\x64;$(SolutionDir)\ThirdParty\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
