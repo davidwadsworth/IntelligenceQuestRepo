@@ -77,9 +77,8 @@ void Map::LoadFullMap(std::string path)
 
 				if (!strcmp(tileName, "0"))
 				{
-					auto& tcol(manager.addEntity());
-					tcol.addComponent<ColliderComponent>("terrain", scaledX, scaledY, scaledSize);
-					tcol.addGroup(Game::groupColliders);
+					//auto& tcol(manager.add_entity());
+					//tcol.add_group(Game::groupColliders);
 				}
 			}
 		} 
@@ -90,8 +89,9 @@ void Map::LoadFullMap(std::string path)
 
 void Map::AddTile(int srcX, int srcY, int x, int y, int rots, SDL_RendererFlip flp)
 {
-	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(srcX, srcY, x, y, tileSize, mapScale, rots, flp, texID);
-	tile.addGroup(Game::groupMap);
+	auto& tile(manager.add_entity());
+	tile.add_component<Components::Transform>(x, y, 32, 32, mapScale);
+	tile.add_component<Components::Render>(texID, new SDL_Rect{ x, y, scaledSize, scaledSize }, new SDL_Rect{ srcX, srcY, 32, 32 }, nullptr, static_cast<float>(rots * 90), flp);
+	tile.add_group(Game::groupMap);
 }
 

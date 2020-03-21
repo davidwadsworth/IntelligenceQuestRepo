@@ -10,21 +10,22 @@
 class Component;
 class Entity;
 class Manager;
+class System;
 
 using ComponentID = std::size_t;
 using Group = std::size_t;
 
 inline ComponentID getNewComponentTypeID()
 {
-	static ComponentID lastID = 0u;
-	return lastID++;
+	static ComponentID last_id = 0u;
+	return last_id++;
 }
 
 template <typename T> inline ComponentID getComponentTypeID() noexcept
 {
 	static_assert (std::is_base_of<Component, T>::value, "");
-	static ComponentID typeID = getNewComponentTypeID();
-	return typeID;
+	static ComponentID type_id = getNewComponentTypeID();
+	return type_id;
 }
 
 constexpr std::size_t maxComponents = 32;
@@ -41,62 +42,56 @@ public:
 	Entity * entity;
 
 	virtual void init() {}
-	virtual void update() {}
-	virtual void draw() {}
 	virtual ~Component() {}
 };
 
 class Entity
 {
 private:
-	Manager& manager;
-	bool active = true;
-	std::vector<std::unique_ptr<Component>> components;
+	Manager& manager_;
+	bool active_ = true;
+	std::vector<std::unique_ptr<Component>> components_;
 
-	ComponentArray componentArray;
-	ComponentBitSet componentBitSet;
-	GroupBitSet groupBitSet;
+	ComponentArray component_array_;
+	ComponentBitSet component_bit_set_;
+	GroupBitSet group_bit_set_;
 
-public: 
-	Entity(Manager& mManager) : manager(mManager)
+public:
+	explicit Entity(Manager& m_manager) : manager_(m_manager), component_array_()
 	{}
-	void update()
+	~Entity()
 	{
-		for (auto& c : components) c->update();
+		components_.erase(std::begin(components_), std::end(components_));
 	}
-	void draw() 
-	{
-		for (auto& c : components) c->draw();
-	}
-	bool isActive() const { return active; }
-	void destroy() { active = false; }
+	bool is_active() const { return active_; }
+	void destroy() { active_ = false; }
 
-	bool hasGroup(Group mGroup)
+	bool has_group(const Group m_group)
 	{
-		return groupBitSet[mGroup];
+		return group_bit_set_[m_group];
 	}
 
-	void addGroup(Group mGroup);
-	void delGroup(Group mGroup)
+	void add_group(Group m_group);
+	void del_group(const Group m_group)
 	{
-		groupBitSet[mGroup] = false;
+		group_bit_set_[m_group] = false;
 	}
 
 	template <typename T> bool hasComponent() const
 	{
-		return componentBitSet[getComponentTypeID<T>()];
+		return component_bit_set_[getComponentTypeID<T>()];
 	}
 
 	template <typename T, typename... TArgs>
-	T& addComponent(TArgs&&... mArgs)
+	T& add_component(TArgs&&... m_args)
 	{
-		T* c(new T(std::forward<TArgs>(mArgs)...));
+		T* c(new T(std::forward<TArgs>(m_args)...));
 		c->entity = this;
-		std::unique_ptr<Component> uPtr{ c };
-		components.emplace_back(std::move(uPtr));
+		std::unique_ptr<Component> u_ptr{ c };
+		components_.emplace_back(std::move(u_ptr));
 
-		componentArray[getComponentTypeID<T>()] = c;
-		componentBitSet[getComponentTypeID<T>()] = true;
+		component_array_[getComponentTypeID<T>()] = c;
+		component_bit_set_[getComponentTypeID<T>()] = true;
 
 		c->init();
 		return *c;
@@ -104,63 +99,119 @@ public:
 
 	template<typename T> T& getComponent() const
 	{
-		auto ptr(componentArray[getComponentTypeID<T>()]);
+		auto ptr(component_array_[getComponentTypeID<T>()]);
 		return *static_cast<T*>(ptr);
 	}
 
 };
 
+class System
+{
+private:
+	bool active_ = true;
+	std::vector<std::vector<Entity*>*> grouped_entities_;
+public:
+	Manager* manager;
+	System() = default;
+	virtual ~System() = default;
+	bool is_active() const { return active_; }
+	void add_grouped_entities(Group group);
+	std::vector<std::vector<Entity*>*> get_grouped_entities();
+	virtual void update() = 0;
+};
+
+
 class Manager
 {
 private:
-	std::vector<std::unique_ptr<Entity>>entities;
-	std::array<std::vector<Entity*>, maxGroups> groupedEntities;
-
+	std::vector<std::unique_ptr<Entity>>entities_;
+	std::array<std::vector<Entity*>, maxGroups> grouped_entities_;
+	std::vector<std::unique_ptr<System>>render_systems_;
+	std::vector<std::unique_ptr<System>>update_systems_;
 public:
-	void update() 
+
+	void update()
 	{
-		for (auto& e : entities) e->update();
+		for (auto& u : update_systems_) u->update();
 	}
-	void draw()
+
+	void render()
 	{
-		for (auto& e : entities) e->draw();
+		for (auto& r : render_systems_) r->update();
 	}
+
 
 	void refresh()
 	{
 		for (auto i(0u); i < maxGroups; i++)
 		{
-			auto& v(groupedEntities[i]);
+			auto& v(grouped_entities_[i]);
 			v.erase(
-				std::remove_if(std::begin(v), std::end(v), [i](Entity* mEntity)
+				std::remove_if(std::begin(v), std::end(v), [i](Entity* m_entity)
 			{
-				return !mEntity->isActive() || !mEntity->hasGroup(i);
+				return !m_entity->is_active() || !m_entity->has_group(i);
 			}),
 				std::end(v));
+
 		}
-		entities.erase(std::remove_if(std::begin(entities), std::end(entities),
-			[](const std::unique_ptr<Entity> &mEntity)
+		entities_.erase(std::remove_if(std::begin(entities_), std::end(entities_),
+			[](const std::unique_ptr<Entity> &m_entity)
 		{
-			return !mEntity->isActive();
+			return !m_entity->is_active();
 		}),
-			std::end(entities));
+			std::end(entities_));
+
+		render_systems_.erase(std::remove_if(std::begin(render_systems_), std::end(render_systems_),
+		[](const std::unique_ptr<System> &m_system)
+		{
+			return !m_system->is_active();
+		}),
+		std::end(render_systems_));
+
+		update_systems_.erase(std::remove_if(std::begin(update_systems_), std::end(update_systems_),
+			[](const std::unique_ptr<System> &m_system)
+			{
+				return !m_system->is_active();
+			}),
+			std::end(update_systems_));
 	}
 
-	void AddToGroup(Entity* mEntity, Group mGroup)
+	void AddToGroup(Entity* m_entity, const Group m_group)
 	{
-		groupedEntities[mGroup].emplace_back(mEntity);
+		grouped_entities_[m_group].emplace_back(m_entity);
 	}
 
-	std::vector<Entity*>& getGroup(Group mGroup)
+	std::vector<Entity*>& getGroup(const Group m_group)
 	{
-		return groupedEntities[mGroup];
+		return grouped_entities_[m_group];
 	}
 
-	Entity& addEntity()
+	Entity& add_entity()
 	{
-		Entity* e = new Entity(*this);
-		std::unique_ptr<Entity> uPtr{ e };
-		entities.emplace_back(std::move(uPtr));
+		const auto e = new Entity(*this);
+		std::unique_ptr<Entity> u_ptr{ e };
+		entities_.emplace_back(std::move(u_ptr));
 		return *e;
 	}
+
+	template <typename T, typename... TArgs>
+	T* add_render_system(TArgs&&... m_args)
+	{
+		T* r(new T(std::forward<TArgs>(m_args)...));
+		std::unique_ptr<System> u_ptr{ r };
+		r->manager = this;
+		render_systems_.emplace_back(std::move(u_ptr));
+		return r;
+	}
+
+	template <typename T, typename... TArgs>
+	T* add_update_system(TArgs&&... m_args)
+	{
+		T* u(new T(std::forward<TArgs>(m_args)...));
+		std::unique_ptr<System> u_ptr{ u };
+		u->manager = this;
+		render_systems_.emplace_back(std::move(u_ptr));
+		return u;
+	}
+
 };

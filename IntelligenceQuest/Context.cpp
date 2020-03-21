@@ -21,7 +21,7 @@ void Context::readInputContexts(const char * path, std::map<const char *, SDL_Ke
 	std::list<SDL_Keycode> keys;
 	std::list<SDL_Keycode> keyExclusions;
 	SDL_EventType eventType;
-	Vector2D velocity;
+	glm::vec2 velocity;
 	const char* name;
 	const char * contextName;
 	const char * eventTypeName;

@@ -1,7 +1,17 @@
 #include "stdafx.h"
 
-void Entity::addGroup(Group mGroup)
+void Entity::add_group(Group m_group)
 {
-	groupBitSet[mGroup] = true;
-	manager.AddToGroup(this, mGroup);
+	group_bit_set_[m_group] = true;
+	manager_.AddToGroup(this, m_group);
+}
+
+void System::add_grouped_entities(Group group)
+{
+	grouped_entities_.push_back(&manager->getGroup(group));
+}
+
+std::vector<std::vector<Entity*>*> System::get_grouped_entities()
+{
+	return grouped_entities_;
 }

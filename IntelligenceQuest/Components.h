@@ -1,12 +1,9 @@
 #pragma once
 #include "ECS.h"
-#include "TransformComponent.h"
-#include "SpriteComponent.h"
-#include "KeyboardController.h"
-#include "ColliderComponent.h"
-#include "TileComponent.h"
-#include "ProjectileComponent.h"
-#include "UILabel.h"
-#include "ControllerComponent.h"
-#include "TextBoxComponent.h"
+#include "component_transform.h"
+#include "component_render.h"
+#include "component_collision.h"
+#include "component_ui_label.h"
+#include "component_controller.h"
+
 

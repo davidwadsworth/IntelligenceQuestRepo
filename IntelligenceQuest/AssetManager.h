@@ -2,10 +2,10 @@
 
 #include <map>
 #include <string>
-#include "TextureManager.h"
-#include "Vector2D.h"
+#include "texture_manager.h"
 #include "ECS.h"
 #include "SDL_ttf.h"
+#include <vec2.hpp>
 
 
 class AssetManager
@@ -16,7 +16,7 @@ public:
 
 	//gameObjects
 
-	void CreateProjectile(Vector2D pos, Vector2D vel, int range, int speed, std::string id);
+	void CreateProjectile(glm::vec2 pos, glm::vec2 vel, int range, int speed, std::string id);
 
 	void CreateBox(int x, int y, int width, int height, int offsetX, int offsetY, int scale, std::string id);
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
+bool BoxCollider2D::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
 {
 	if (
 		recA.x + recA.w >= recB.x &&
@@ -13,16 +13,4 @@ bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
 	}
 
 	return false;
-}
-
-bool Collision::AABB(const ColliderComponent& colA, const ColliderComponent& colB)
-{
-	if (AABB(colA.collider, colB.collider))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }

@@ -1,8 +1,9 @@
 #include "stdafx.h"
+#include "texture_manager.h"
 
 GameObject::GameObject(const char* texturesheet, int x, int y)
 {
-	objTexture = TextureManager::LoadTexture(texturesheet);
+	objTexture = TextureManager::load_texture(texturesheet);
 	
 	xpos = x;
 	ypos = y;

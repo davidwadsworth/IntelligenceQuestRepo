@@ -1,0 +1,6 @@
+﻿  system_dynamic_renderer.cpp
+c:\users\dwads\documents\github\intelligencequest\intelligencequest\system_dynamic_renderer.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequest\intelligencequest\system_dynamic_renderer.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequest\intelligencequest\system_dynamic_renderer.cpp(25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequest\intelligencequest\system_dynamic_renderer.cpp(26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  IntelligenceQuest.vcxproj -> C:\Users\dwads\Documents\GitHub\IntelligenceQuest\x64\Debug\IntelligenceQuest.exe

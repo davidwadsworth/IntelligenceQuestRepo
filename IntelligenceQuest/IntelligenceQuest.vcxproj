@@ -23,20 +23,20 @@
     <ProjectGuid>{935135E8-72D0-4D48-9D32-B66EFC37BA40}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>IntelligenceQuest</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -50,7 +50,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -109,10 +109,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Third Party\SDL2\include;$(SolutionDir)\Third Party\SDL2_image\include;$(SolutionDir)\Third Party\SDL2_mixer-2.0.2\include;$(SolutionDir)\Third Party\SDL2_ttf\include;$(SolutionDir)\Third Party\rapidxml;$(SolutionDir)\Third Party\glm\glm;$(SolutionDir)\Third Party\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Third Party\SDL2\lib\x64;$(SolutionDir)\Third Party\SDL2_image\lib\x64;$(SolutionDir)\Third Party\SDL2_mixer-2.0.2\lib\x64;$(SolutionDir)\Third Party\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,40 +158,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
+    <ClInclude Include="animate.h" />
+    <ClInclude Include="system_animation.h" />
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="components.h" />
+    <ClInclude Include="component_animation.h" />
+    <ClInclude Include="component_collision.h" />
     <ClInclude Include="Collision.h" />
-    <ClInclude Include="Components.h" />
     <ClInclude Include="ECS.h" />
-    <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputContext.h" />
     <ClInclude Include="Inputs.h" />
-    <ClInclude Include="KeyboardController.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="ProjectileComponent.h" />
     <ClInclude Include="RawInputConstants.h" />
-    <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="component_controller.h" />
     <ClInclude Include="Context.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="TextBoxComponent.h" />
-    <ClInclude Include="TileComponent.h" />
-    <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="systems.h" />
+    <ClInclude Include="system_camera.h" />
+    <ClInclude Include="system_controller.h" />
+    <ClInclude Include="system_movement.h" />
+    <ClInclude Include="system_static_renderer.h" />
+    <ClInclude Include="system_dynamic_renderer.h" />
+    <ClInclude Include="component_text_box.h" />
+    <ClInclude Include="component_transform.h" />
+    <ClInclude Include="component_render.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="UILabel.h" />
-    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="texture_manager.h" />
+    <ClInclude Include="component_ui_label.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="component_animation.cpp" />
+    <ClCompile Include="component_collision.cpp" />
+    <ClCompile Include="component_controller.cpp" />
+    <ClCompile Include="component_render.cpp" />
+    <ClCompile Include="component_text_box.cpp" />
+    <ClCompile Include="component_transform.cpp" />
+    <ClCompile Include="component_ui_label.cpp" />
     <ClCompile Include="ECS.cpp" />
-    <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IntelligenceQuest.cpp" />
@@ -200,8 +211,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="system_animation.cpp" />
+    <ClCompile Include="system_camera.cpp" />
+    <ClCompile Include="system_controller.cpp" />
+    <ClCompile Include="system_movement.cpp" />
+    <ClCompile Include="system_static_renderer.cpp" />
+    <ClCompile Include="system_dynamic_renderer.cpp" />
+    <ClCompile Include="texture_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ColTex.png" />

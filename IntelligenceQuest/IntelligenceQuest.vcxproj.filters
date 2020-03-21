@@ -13,14 +13,44 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\ECS">
-      <UniqueIdentifier>{1ad832c9-4fad-461d-b2a1-22eaa590e887}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{e5213782-c5ec-412d-a4b6-8333eb164f0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\Image Assets">
       <UniqueIdentifier>{333ac26c-67c1-4c3d-83aa-08cca6286732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{1ad832c9-4fad-461d-b2a1-22eaa590e887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Component">
+      <UniqueIdentifier>{b120b243-4089-415e-a4a4-c20cce5ae9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Component\Header Files">
+      <UniqueIdentifier>{5f288361-e822-4739-917c-f6378da42580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Component\Source Files">
+      <UniqueIdentifier>{884dcb88-e786-407f-89bf-d2266dbc2331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems">
+      <UniqueIdentifier>{efe27791-50c1-4818-8635-83ea4e57d15c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Render Systems">
+      <UniqueIdentifier>{65222b47-1e60-4c54-a11f-aca0e8dd60f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Render Systems\Header Files">
+      <UniqueIdentifier>{bd5d54aa-d31d-44c6-b573-adea254fb0d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Render Systems\Source Files">
+      <UniqueIdentifier>{5e5df823-4a5e-4708-94b2-960f2694d949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Update Systems">
+      <UniqueIdentifier>{a7172343-2563-47d4-a53d-44b8e0822cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Update Systems\Header Files">
+      <UniqueIdentifier>{970dda9f-5119-4e6e-86b9-83ebd002be5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Systems\Update Systems\Source Files">
+      <UniqueIdentifier>{616730e7-f926-4df7-93fb-0c5c1fbed168}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,56 +63,20 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="ECS.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardController.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectileComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="UILabel.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Inputs.h">
-      <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="RawInputConstants.h">
       <Filter>Header Files</Filter>
@@ -96,17 +90,59 @@
     <ClInclude Include="InputContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ControllerComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBoxComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
+    <ClInclude Include="Inputs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="component_collision.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_movement.h">
+      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_static_renderer.h">
+      <Filter>ECS\Systems\Render Systems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_dynamic_renderer.h">
+      <Filter>ECS\Systems\Render Systems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_controller.h">
+      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_controller.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_text_box.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_transform.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_ui_label.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>ECS\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="systems.h">
+      <Filter>ECS\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_manager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_animation.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_render.h">
+      <Filter>ECS\Component\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_camera.h">
+      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="system_animation.h">
+      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,23 +155,17 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ECS.cpp">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source Files</Filter>
@@ -143,8 +173,47 @@
     <ClCompile Include="Context.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Font.cpp">
+    <ClCompile Include="system_movement.cpp">
+      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="system_static_renderer.cpp">
+      <Filter>ECS\Systems\Render Systems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="system_dynamic_renderer.cpp">
+      <Filter>ECS\Systems\Render Systems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="system_controller.cpp">
+      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_controller.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_collision.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_text_box.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_transform.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_ui_label.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_manager.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_animation.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_render.cpp">
+      <Filter>ECS\Component\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="system_camera.cpp">
+      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="system_animation.cpp">
+      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "component_text_box.h"
 
 
 AssetManager::AssetManager(Manager* man) : manager(man)
@@ -8,16 +8,18 @@ AssetManager::AssetManager(Manager* man) : manager(man)
 AssetManager::~AssetManager()
 {}
 
-void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int speed, std::string id)
+//TODO move these abominations
+void AssetManager::CreateProjectile(glm::vec2 pos, glm::vec2 vel, int range, int speed, std::string id)
 {
-	auto& projectile(manager->addEntity());
-	projectile.addComponent<TransformComponent>(pos.x, pos.y, 32, 32, 1);
-	projectile.addComponent<SpriteComponent>(id, false);
-	projectile.addComponent<ProjectileComponent>(range, speed, vel);
-	projectile.addComponent<ColliderComponent>("projectile");
-	projectile.addGroup(Game::groupProjectiles);
+	auto& projectile(manager->add_entity());
+	projectile.add_component<Components::Transform>(pos.x, pos.y, 32, 32, 1);
+	projectile.add_component<Components::Render>(id, nullptr);
+	//projectile.add_component<Components::>(range, speed, vel);
+	//projectile.add_component<ColliderComponent>("projectile");
+	projectile.add_group(Game::groupProjectiles);
 }
 
+//TODO move these abominations
 void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, int offsetY, int scale, std::string id)
 {
 	int tileSize = 10;
@@ -29,13 +31,13 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 	int rightX = x + boxW - offsetX;
 	int botY = y  + boxH - offsetY;
 	
-	auto& textboxComponents(manager->addEntity());
+	auto& textboxComponents(manager->add_entity());
 
 
 /*******************
  *  Top Left Corner
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		0, 0,
 /*xpos			  : */		leftX,
 /*ypos			  : */		topY, 
@@ -48,7 +50,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Top Right Corner
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		tileSize * 2, 0,
 /*xpos			  : */		rightX,
 /*ypos			  : */		topY,
@@ -62,7 +64,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Bottom Left Corner
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		0, tileSize * 2,
 /*xpos			  : */		leftX,
 /*ypos			  : */		botY, 
@@ -76,7 +78,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Bottom Right Corner
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		tileSize * 2, tileSize * 2, 
 /*xpos			  : */		rightX,
 /*ypos			  : */		botY,
@@ -90,7 +92,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Top Edge
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		tileSize, 0,
 /*xpos			  : */		leftX + scaledSize, 
 /*ypos			  : */		topY, 
@@ -104,7 +106,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Left Edge
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		0, tileSize,
 /*xpos			  : */		leftX, 
 /*ypos			  : */		topY + scaledSize,
@@ -118,7 +120,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Right Edge
  *******************/						
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY	  : */		tileSize * 2, tileSize,
 /*xpos			  : */		rightX, 
 /*ypos			  : */		topY + scaledSize,
@@ -132,7 +134,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Bottom Edge
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY  : */		tileSize, tileSize * 2, 
 /*xpos		  : */		leftX + scaledSize, 
 /*ypos		  : */		botY,
@@ -146,7 +148,7 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*******************
  *  Body
  *******************/
-	textboxComponents.addComponent<TextBoxComponent>(
+	textboxComponents.add_component<Components::TextBoxComponent>(
 /*srcX, srcY  : */		tileSize, tileSize, 
 /*xpos		  : */		leftX + scaledSize, 
 /*ypos		  : */		topY + scaledSize, 
@@ -156,10 +158,10 @@ void AssetManager::CreateBox(int x, int y, int width, int height, int offsetX, i
 /*rots, flipX : */		0, SDL_FLIP_NONE, id
 						);
 
-	textboxComponents.addGroup(Game::groupTextBoxes);
+	textboxComponents.add_group(Game::groupTextBoxes);
 
 }
-
+//TODO move these abominations
 void AssetManager::CreateTextBox(int x, int y, int width, int height, int offsetX, int offsetY, int scale, std::string text)
 {
 	std::string id = "textbox";
@@ -175,7 +177,7 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 	
 	CreateBox(x, y, width, height, offsetX, offsetY, scale, id);
 
-	auto& textboxComponents(manager->addEntity());
+	auto& textboxComponents(manager->add_entity());
 
 	if (y > botY)
 	{
@@ -187,7 +189,7 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 		/*******************
 		*  Speech Bubble Bottom
 		*******************/
-		textboxComponents.addComponent<TextBoxComponent>(
+		textboxComponents.add_component<Components::TextBoxComponent>(
 			/*srcX, srcY  : */		0, tileSize * 3,
 			/*xpos		  : */		speechX,
 			/*ypos		  : */		botY,
@@ -207,7 +209,7 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 		/*******************
 		*  Speech Bubble Top
 		*******************/
-		textboxComponents.addComponent<TextBoxComponent>(
+		textboxComponents.add_component<Components::TextBoxComponent>(
 			/*srcX, srcY  : */		tileSize * 2, tileSize * 3,
 			/*xpos		  : */		speechX,
 			/*ypos		  : */		topY,
@@ -227,7 +229,7 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 		/*******************
 		*  Speech Bubble Right
 		*******************/
-		textboxComponents.addComponent<TextBoxComponent>(
+		textboxComponents.add_component<Components::TextBoxComponent>(
 			/*srcX, srcY  : */		tileSize, tileSize * 3,
 			/*xpos		  : */		rightX,
 			/*ypos		  : */		speechY,
@@ -247,7 +249,7 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 		/*******************
 		*  Speech Bubble Right
 		*******************/
-		textboxComponents.addComponent<TextBoxComponent>(
+		textboxComponents.add_component<Components::TextBoxComponent>(
 			/*srcX, srcY  : */		tileSize, tileSize * 3,
 			/*xpos		  : */		leftX,
 			/*ypos		  : */		speechY,
@@ -259,13 +261,15 @@ void AssetManager::CreateTextBox(int x, int y, int width, int height, int offset
 	}
 
 
-	textboxComponents.addComponent<UILabel>(leftX + scaledSize, topY + scaledSize, text, "gilsans", black);
-	textboxComponents.addGroup(Game::groupTextBoxes);
+	textboxComponents.add_component<Components::UILabel>(leftX + scaledSize, topY + scaledSize, text, "gilsans", black);
+	textboxComponents.add_group(Game::groupTextBoxes);
 }
 
+//TODO move these abominations
 void AssetManager::CreateTextBox(int x, int y, TTF_Font* font, std::string text)
 {}
 
+//TODO move these abominations
 void AssetManager::CreateMenu(int x, int y)
 {
 	CreateBox(x, y, 10, 10, 0, 0, 1, "textbox");
@@ -274,7 +278,7 @@ void AssetManager::CreateMenu(int x, int y)
 
 void AssetManager::AddTexture(std::string id, const char* path)
 {
-	textures.emplace(id, TextureManager::LoadTexture(path));
+	textures.emplace(id, TextureManager::load_texture(path));
 }
 
 SDL_Texture* AssetManager::GetTexture(std::string id)

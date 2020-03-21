@@ -1,11 +1,15 @@
 #pragma once
 #include "SDL.h"
 
-class ColliderComponent;
+class Collider
+{
+	virtual bool collide(const Collider& col) = 0;
+};
 
-class Collision
+
+class BoxCollider2D : public Collider
 {
 public:
 	static bool AABB(const SDL_Rect& recA, const SDL_Rect& recB);
-	static bool AABB(const ColliderComponent& colA, const ColliderComponent& colB);
+
 };
