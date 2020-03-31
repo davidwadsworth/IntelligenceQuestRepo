@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ECS.h"
-#include "AssetManager.h"
+#include "asset_manager.h"
 #include "Game.h"
 
 #include <SDL.h>

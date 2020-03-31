@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "texture_manager.h"
-
+#include "SDL_image.h"
 
 SDL_Texture* TextureManager::load_texture(const char* texture)
 {

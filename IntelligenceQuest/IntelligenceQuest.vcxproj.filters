@@ -9,48 +9,53 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{ac92b510-3193-4822-b314-17421a067059}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Shaders">
-      <UniqueIdentifier>{e5213782-c5ec-412d-a4b6-8333eb164f0c}</UniqueIdentifier>
+    <Filter Include="Assets\Data">
+      <UniqueIdentifier>{72d6c525-7499-431c-8d17-6cf4506d8fc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Image Assets">
-      <UniqueIdentifier>{333ac26c-67c1-4c3d-83aa-08cca6286732}</UniqueIdentifier>
+    <Filter Include="Assets\Images">
+      <UniqueIdentifier>{cc4ec7fb-b6fe-4d79-b5af-5a64f3ef28ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS">
-      <UniqueIdentifier>{1ad832c9-4fad-461d-b2a1-22eaa590e887}</UniqueIdentifier>
+    <Filter Include="Assets\Audio">
+      <UniqueIdentifier>{90d4b4b8-521b-4d9f-8a70-e0c364af7886}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Component">
-      <UniqueIdentifier>{b120b243-4089-415e-a4a4-c20cce5ae9b0}</UniqueIdentifier>
+    <Filter Include="Commands">
+      <UniqueIdentifier>{c169d49f-e7e8-4cad-9dc8-2feba711b845}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Component\Header Files">
-      <UniqueIdentifier>{5f288361-e822-4739-917c-f6378da42580}</UniqueIdentifier>
+    <Filter Include="Components">
+      <UniqueIdentifier>{27b78631-a6ff-4b28-a573-9884b9be1bd5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Component\Source Files">
-      <UniqueIdentifier>{884dcb88-e786-407f-89bf-d2266dbc2331}</UniqueIdentifier>
+    <Filter Include="Components\Header Files">
+      <UniqueIdentifier>{26f30315-7249-4316-8145-09da9b1a48e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems">
-      <UniqueIdentifier>{efe27791-50c1-4818-8635-83ea4e57d15c}</UniqueIdentifier>
+    <Filter Include="Components\Source Files">
+      <UniqueIdentifier>{33356065-a3ee-4860-8b7d-84ae39c285f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Render Systems">
-      <UniqueIdentifier>{65222b47-1e60-4c54-a11f-aca0e8dd60f8}</UniqueIdentifier>
+    <Filter Include="Commands\Header Files">
+      <UniqueIdentifier>{a0fd46f3-9593-4b2f-a1e8-8df6d6ae1766}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Render Systems\Header Files">
-      <UniqueIdentifier>{bd5d54aa-d31d-44c6-b573-adea254fb0d2}</UniqueIdentifier>
+    <Filter Include="Commands\Source Files">
+      <UniqueIdentifier>{28a1dbe4-b3cd-4d5d-b94f-91c8f606bcb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Render Systems\Source Files">
-      <UniqueIdentifier>{5e5df823-4a5e-4708-94b2-960f2694d949}</UniqueIdentifier>
+    <Filter Include="Game Objects">
+      <UniqueIdentifier>{b1e26caa-5405-41e9-aa01-ab79c1baa5bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Update Systems">
-      <UniqueIdentifier>{a7172343-2563-47d4-a53d-44b8e0822cea}</UniqueIdentifier>
+    <Filter Include="Game Objects\Header Files">
+      <UniqueIdentifier>{b4e0bf41-1e6d-4f72-84f4-c0e5eec251d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Update Systems\Header Files">
-      <UniqueIdentifier>{970dda9f-5119-4e6e-86b9-83ebd002be5d}</UniqueIdentifier>
+    <Filter Include="Game Objects\Source Files">
+      <UniqueIdentifier>{80e51062-fbda-4e06-bd68-e8ef2e607651}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\Systems\Update Systems\Source Files">
-      <UniqueIdentifier>{616730e7-f926-4df7-93fb-0c5c1fbed168}</UniqueIdentifier>
+    <Filter Include="Data Loads">
+      <UniqueIdentifier>{d0025b26-1b1c-43e3-a511-c61264c03f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Loads\Header Files">
+      <UniqueIdentifier>{7542a90b-300f-4b25-8cf0-1baf94288907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Loads\Source Files">
+      <UniqueIdentifier>{90d15eab-4ad6-4d8c-95f5-5889e1697866}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,204 +65,248 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ECS.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RawInputConstants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Context.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Inputs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_collision.h">
-      <Filter>ECS\Component\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="system_movement.h">
-      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="system_static_renderer.h">
-      <Filter>ECS\Systems\Render Systems\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="system_dynamic_renderer.h">
-      <Filter>ECS\Systems\Render Systems\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="system_controller.h">
-      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_controller.h">
-      <Filter>ECS\Component\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_text_box.h">
-      <Filter>ECS\Component\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_transform.h">
-      <Filter>ECS\Component\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_ui_label.h">
-      <Filter>ECS\Component\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="components.h">
-      <Filter>ECS\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="systems.h">
-      <Filter>ECS\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="texture_manager.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="component_animation.h">
-      <Filter>ECS\Component\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="animate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="keyboard_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asset_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_camera.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_controller_check_action.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_controller_move.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_controller_pause.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_dynamic_render.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_frame_animation.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_movement.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_movement_animation.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_static_render.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="component_animation.h">
+      <Filter>Components\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_collision.h">
+      <Filter>Components\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_movement.h">
+      <Filter>Components\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="component_render.h">
-      <Filter>ECS\Component\Header Files</Filter>
+      <Filter>Components\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="system_camera.h">
-      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
+    <ClInclude Include="component_text_box.h">
+      <Filter>Components\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="system_animation.h">
-      <Filter>ECS\Systems\Update Systems\Header Files</Filter>
+    <ClInclude Include="component_transform.h">
+      <Filter>Components\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_ui_label.h">
+      <Filter>Components\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object_player.h">
+      <Filter>Game Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object_tile_map.h">
+      <Filter>Game Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_load.h">
+      <Filter>Data Loads</Filter>
+    </ClInclude>
+    <ClInclude Include="data_load_controller.h">
+      <Filter>Data Loads\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_load_tiles.h">
+      <Filter>Data Loads\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IntelligenceQuest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ECS.cpp">
-      <Filter>ECS</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Context.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="system_movement.cpp">
-      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="system_static_renderer.cpp">
-      <Filter>ECS\Systems\Render Systems\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="system_dynamic_renderer.cpp">
-      <Filter>ECS\Systems\Render Systems\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="system_controller.cpp">
-      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="component_controller.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="component_collision.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="component_text_box.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="component_transform.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="component_ui_label.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="texture_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component_animation.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
+    <ClCompile Include="asset_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intelligence_quest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ecs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_camera.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_controller_check_action.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_controller_move.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_controller_pause.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_dynamic_render.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_frame_animation.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_movement.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_movement_animation.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_static_render.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_ui_label.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_transform.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_text_box.cpp">
+      <Filter>Components\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="component_render.cpp">
-      <Filter>ECS\Component\Source Files</Filter>
+      <Filter>Components\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="system_camera.cpp">
-      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
+    <ClCompile Include="component_movement.cpp">
+      <Filter>Components\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="system_animation.cpp">
-      <Filter>ECS\Systems\Update Systems\Source Files</Filter>
+    <ClCompile Include="component_collision.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_animation.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object_player.cpp">
+      <Filter>Game Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object_tile_map.cpp">
+      <Filter>Game Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_load_controller.cpp">
+      <Filter>Data Loads\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_load_tiles.cpp">
+      <Filter>Data Loads\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ColTex.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="flesh_child_full.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="textbox.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="tile_set_2.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="rock.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="weak father full 128x64.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-    <Image Include="dad_full_128x64.png">
-      <Filter>Resource Files\Image Assets</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="GIL_____.TTF">
-      <Filter>Resource Files</Filter>
-    </Font>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="text.vs">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="text.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="testMap.xml">
-      <Filter>Resource Files</Filter>
+    <Xml Include="assets\data\contexts.xml">
+      <Filter>Assets\Data</Filter>
     </Xml>
-    <Xml Include="contexts.xml">
-      <Filter>Resource Files</Filter>
+    <Xml Include="assets\data\controller.xml">
+      <Filter>Assets\Data</Filter>
     </Xml>
+    <Xml Include="assets\data\testMap.xml">
+      <Filter>Assets\Data</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\data\iq_map_test.map">
+      <Filter>Assets\Data</Filter>
+    </None>
+    <None Include="assets\data\text.frag">
+      <Filter>Assets\Data</Filter>
+    </None>
+    <None Include="assets\data\text.vs">
+      <Filter>Assets\Data</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\ColTex.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\dad_full_128x64.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\fight.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\flesh_child_full.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\Flesh_Child_single.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\IQ_tile_set.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\rock.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\textbox.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\tile_set_2.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="assets\images\weak_father_full_128x64.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\CollisionMap.txt">
+      <Filter>Assets\Data</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\audio\daddysgroove.mp3">
+      <Filter>Assets\Audio</Filter>
+    </Media>
   </ItemGroup>
 </Project>

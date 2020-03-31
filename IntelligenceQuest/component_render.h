@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SDL.h"
-#include "AssetManager.h"
+#include "asset_manager.h"
 
 
 namespace Components

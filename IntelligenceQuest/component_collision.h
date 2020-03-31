@@ -15,7 +15,6 @@ namespace Components
 		Collision(std::string t);
 		Collision(std::string t, int xpos, int ypos, int size);
 		
-
 		~Collision();
 
 	};

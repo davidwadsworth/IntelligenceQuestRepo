@@ -1,14 +1,8 @@
 #pragma once
 
 #include <SDL.h>
-#include <iostream>
-#include <SDL_image.h>
-#include <vector>
-#include "AssetManager.h"
-#include "InputContext.h"
-#include <SDL.h>
-#include "KeyboardHandler.h"
-#include <Box2D/Dynamics/b2World.h>
+#include "keyboard_handler.h"
+#include "asset_manager.h"
 
 class Game {
 
@@ -18,14 +12,12 @@ public:
 
 	void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
-	void handleEvents();
-	void update();
-	void render();
+	void handle_events();
+	static void update();
+	static void render();
 	void clean();
 
-	bool running() {return is_running;}
-
-
+	static bool running() {return is_running;}
 	
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
@@ -38,14 +30,14 @@ public:
 
 	SDL_Window *window;
 
-	enum groupLabels : std::size_t
+	enum group_labels : std::size_t
 	{
-		groupMap,
-		groupPlayers,
-		groupColliders,
-		groupProjectiles,
-		groupControllers,
-		groupTextBoxes
+		group_map,
+		group_players,
+		group_colliders,
+		group_projectiles,
+		group_controllers,
+		group_text_boxes
 	};
 
 private:

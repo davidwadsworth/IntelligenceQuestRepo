@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -159,85 +159,101 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="animate.h" />
-    <ClInclude Include="system_animation.h" />
-    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="command.h" />
+    <ClInclude Include="command_camera.h" />
+    <ClInclude Include="command_controller_check_action.h" />
+    <ClInclude Include="command_controller_move.h" />
+    <ClInclude Include="command_controller_pause.h" />
+    <ClInclude Include="command_dynamic_render.h" />
+    <ClInclude Include="command_frame_animation.h" />
+    <ClInclude Include="command_movement.h" />
+    <ClInclude Include="command_movement_animation.h" />
+    <ClInclude Include="command_static_render.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="component_animation.h" />
     <ClInclude Include="component_collision.h" />
-    <ClInclude Include="Collision.h" />
-    <ClInclude Include="ECS.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="InputContext.h" />
-    <ClInclude Include="Inputs.h" />
-    <ClInclude Include="KeyboardHandler.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="RawInputConstants.h" />
-    <ClInclude Include="component_controller.h" />
-    <ClInclude Include="Context.h" />
-    <ClInclude Include="systems.h" />
-    <ClInclude Include="system_camera.h" />
-    <ClInclude Include="system_controller.h" />
-    <ClInclude Include="system_movement.h" />
-    <ClInclude Include="system_static_renderer.h" />
-    <ClInclude Include="system_dynamic_renderer.h" />
+    <ClInclude Include="component_movement.h" />
+    <ClInclude Include="component_render.h" />
     <ClInclude Include="component_text_box.h" />
     <ClInclude Include="component_transform.h" />
-    <ClInclude Include="component_render.h" />
+    <ClInclude Include="component_ui_label.h" />
+    <ClInclude Include="controller.h" />
+    <ClInclude Include="data_load.h" />
+    <ClInclude Include="data_load_controller.h" />
+    <ClInclude Include="data_load_tiles.h" />
+    <ClInclude Include="ecs.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="asset_manager.h" />
+    <ClInclude Include="game_object.h" />
+    <ClInclude Include="game_object_player.h" />
+    <ClInclude Include="game_object_tile_map.h" />
+    <ClInclude Include="keyboard_handler.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="texture_manager.h" />
-    <ClInclude Include="component_ui_label.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="asset_manager.cpp" />
+    <ClCompile Include="command_camera.cpp" />
+    <ClCompile Include="command_controller_check_action.cpp" />
+    <ClCompile Include="command_controller_move.cpp" />
+    <ClCompile Include="command_controller_pause.cpp" />
+    <ClCompile Include="command_dynamic_render.cpp" />
+    <ClCompile Include="command_frame_animation.cpp" />
+    <ClCompile Include="command_movement.cpp" />
+    <ClCompile Include="command_movement_animation.cpp" />
+    <ClCompile Include="command_static_render.cpp" />
     <ClCompile Include="component_animation.cpp" />
     <ClCompile Include="component_collision.cpp" />
-    <ClCompile Include="component_controller.cpp" />
+    <ClCompile Include="component_movement.cpp" />
     <ClCompile Include="component_render.cpp" />
     <ClCompile Include="component_text_box.cpp" />
     <ClCompile Include="component_transform.cpp" />
     <ClCompile Include="component_ui_label.cpp" />
-    <ClCompile Include="ECS.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="IntelligenceQuest.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Context.cpp" />
+    <ClCompile Include="controller.cpp" />
+    <ClCompile Include="data_load_controller.cpp" />
+    <ClCompile Include="data_load_tiles.cpp" />
+    <ClCompile Include="ecs.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="game_object_player.cpp" />
+    <ClCompile Include="game_object_tile_map.cpp" />
+    <ClCompile Include="intelligence_quest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="system_animation.cpp" />
-    <ClCompile Include="system_camera.cpp" />
-    <ClCompile Include="system_controller.cpp" />
-    <ClCompile Include="system_movement.cpp" />
-    <ClCompile Include="system_static_renderer.cpp" />
-    <ClCompile Include="system_dynamic_renderer.cpp" />
     <ClCompile Include="texture_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ColTex.png" />
-    <Image Include="dad_full_128x64.png" />
-    <Image Include="flesh_child_full.png" />
-    <Image Include="rock.png" />
-    <Image Include="textbox.png" />
-    <Image Include="tile_set_2.png" />
-    <Image Include="weak father full 128x64.png" />
+    <Media Include="assets\audio\daddysgroove.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="GIL_____.TTF" />
+    <Text Include="assets\data\CollisionMap.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="text.frag" />
-    <None Include="text.vs" />
+    <Xml Include="assets\data\contexts.xml" />
+    <Xml Include="assets\data\controller.xml" />
+    <Xml Include="assets\data\testMap.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="contexts.xml" />
-    <Xml Include="testMap.xml" />
+    <None Include="assets\data\iq_map_test.map" />
+    <None Include="assets\data\text.frag" />
+    <None Include="assets\data\text.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\ColTex.png" />
+    <Image Include="assets\images\dad_full_128x64.png" />
+    <Image Include="assets\images\fight.png" />
+    <Image Include="assets\images\flesh_child_full.png" />
+    <Image Include="assets\images\Flesh_Child_single.png" />
+    <Image Include="assets\images\IQ_tile_set.png" />
+    <Image Include="assets\images\rock.png" />
+    <Image Include="assets\images\textbox.png" />
+    <Image Include="assets\images\tile_set_2.png" />
+    <Image Include="assets\images\weak_father_full_128x64.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

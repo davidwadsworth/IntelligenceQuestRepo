@@ -20,11 +20,19 @@ Components::Render::Render(const std::string id, SDL_Rect* dest, SDL_Rect* src, 
 	set_tex(id);
 }
 
-Components::Render::~Render() = default;
+Components::Render::~Render()
+{
+	if (src)
+		delete src;
+	if (dest)
+		delete dest;
+	if (rotation_point)
+		delete rotation_point;
+}
 
 void Components::Render::set_tex(const std::string id) 
 {
-	texture = Game::assets->GetTexture(id);
+	texture = Game::assets->get_texture(id);
 }
 
 

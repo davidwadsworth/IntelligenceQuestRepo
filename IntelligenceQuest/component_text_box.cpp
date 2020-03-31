@@ -10,7 +10,7 @@ Components::TextBoxComponent::TextBoxComponent(int srcX, int srcY, int xpos, int
 {
 	flip = flp;
 	rotations = rots;
-	texture = Game::assets->GetTexture(id);
+	texture = Game::assets->get_texture(id);
 
 	position.x = xpos;
 	position.y = ypos;

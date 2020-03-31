@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<controller_map name="input maps" description="array of various inputs and their directed action" toolsversion="10.0">
+  <!--TODO move this to seperate file and create appropriate c++ load-->    
+  <set name="player 1">
+      <key key_id="left" key="79"/>
+      <key key_id="right" key="80"/>
+      <key key_id="down" key="81"/>
+      <key key_id="up" key="82"/>
+      <key key_id="action_1" key="29"/>
+      <key key_id="action_2" key="30"/>
+      <key key_id="action_3" key="31"/>
+      <key key_id ="menu" key="27"/>
+  </set>
+</controller_map>
