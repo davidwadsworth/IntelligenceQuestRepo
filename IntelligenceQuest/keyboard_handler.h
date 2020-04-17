@@ -12,18 +12,18 @@ public:
 	{
 	}
 
-	bool checkKeyEvent(SDL_Keycode key, SDL_EventType type)
+	bool check_key_event(SDL_Keycode key, SDL_EventType type)
 	{
-		return keyEvents[key] == type;
+		return key_events[key] == type;
 	}
 
-	bool checkKeyState(int keyCode) const
+	bool check_key_state(int keyCode) const
 	{
-		return (keystates[keyCode]);
+		return (key_states[keyCode]);
 	}
 
-	const Uint8* keystates = SDL_GetKeyboardState(NULL);
+	const Uint8* key_states = SDL_GetKeyboardState(NULL);
 
-	Uint32 keyEvents[];
+	Uint32 key_events[];
 private:
 };

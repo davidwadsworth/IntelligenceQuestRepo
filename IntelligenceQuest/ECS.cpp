@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "game_object.h"
 
-std::vector<GameObject*> Manager::System::organized_game_objects;
+std::vector< std::vector<std::unique_ptr<GameObject>>*> Manager::System::organized_game_objects;
 std::vector<std::unique_ptr<Entity>> Manager::entities_;
 std::array<std::vector<std::unique_ptr<GameObject>>, maxGroups> Manager::grouped_game_objects_;
 
@@ -36,6 +36,7 @@ void Manager::pause()
 	System::pause_update();
 }
 
+
 void Manager::minimize()
 {
 	System::pause_render();
@@ -66,12 +67,12 @@ void Manager::refresh()
 
 void Manager::add_to_group(GameObject * m_game_object, const Group m_group)
 {
-	grouped_game_objects_[m_group].emplace_back(m_game_object);
+	std::unique_ptr<GameObject> g_obj(m_game_object);
+	grouped_game_objects_[m_group].emplace_back(std::move(g_obj));
 }
 void Manager::add_group_to_system(const Group group)
 {
-	for (auto &game_obj : grouped_game_objects_[group])
-		System::organized_game_objects.push_back(game_obj.get());
+	System::organized_game_objects.push_back(&grouped_game_objects_[group]);
 }
 
 void Manager::clear_system()
@@ -89,26 +90,30 @@ Entity & Manager::add_entity()
 
 void Manager::System::pause_update()
 {
-	for (auto game_object : System::organized_game_objects)
-		game_object->pause_update();
+	for (auto group : System::organized_game_objects)
+		for (auto& game_object : *group)
+			game_object->pause_update();
 }
 
 void Manager::System::pause_render()
 {
-	for (auto game_object : System::organized_game_objects)
-		game_object->pause_render();
+	for (auto group : System::organized_game_objects)
+		for (auto& game_object : *group)
+			game_object->pause_render();
 }
 
 void Manager::System::update()
 {
-	for (auto game_object : System::organized_game_objects)
-		game_object->update();
+	for (auto group : System::organized_game_objects)
+		for (auto& game_object : *group)
+			game_object->update();
 }
 
 void Manager::System::render()
 {
-	for (auto game_object : System::organized_game_objects)
-		game_object->render();
+	for (auto group : System::organized_game_objects)
+		for (auto& game_object : *group)
+			game_object->render();
 }
 
 Entity::Entity() : component_array_()

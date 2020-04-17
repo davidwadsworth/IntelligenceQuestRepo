@@ -7,6 +7,7 @@ namespace Components
 	class Transform : public Component
 	{
 	public:
+		glm::vec2 prev_position;
 		glm::vec2 position;
 
 		int height = 32;

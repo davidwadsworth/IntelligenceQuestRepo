@@ -33,8 +33,8 @@ public:
 	bool is_update_paused() const;
 	bool is_render_paused() const;
 
-	void add_update_command(Command * command);
-	void add_render_command(Command * command);
+	Command* add_update_command(Command * command);
+	Command* add_render_command(Command * command);
 
 	const std::vector<std::unique_ptr<Command>>* get_render_commands() const;
 	const std::vector<std::unique_ptr<Command>>* get_update_commands() const;

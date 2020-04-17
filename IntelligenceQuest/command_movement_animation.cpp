@@ -10,7 +10,7 @@ Commands::MovementAnimation::~MovementAnimation() = default;
 void Commands::MovementAnimation::execute()
 {
 	frame_animation_->is_animated = true;
-	const auto vel = movement_->velocity;
+	const auto vel = movement_->force;
 
 	if (vel.x > 0)
 	{

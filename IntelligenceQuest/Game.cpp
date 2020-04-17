@@ -4,6 +4,9 @@
 #include <SDL_mixer.h>
 #include "game_object_player.h"
 #include "game_object_tile_map.h"
+#include "collision_world.h"
+
+#define DEBUG true
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -14,10 +17,12 @@ AssetManager* Game::assets = new AssetManager();
 KeyboardHandler Game::keyboard_handler = KeyboardHandler();
 
 GameObjects::Player* player;
-GameObjects::TileMap* tile_map;
+DataLoads::LTileMap* tile_map;
 
 int Game::SCREEN_WIDTH;
 int Game::SCREEN_HEIGHT;
+
+float Game::delta_time;
 
 bool Game::is_running = false;
 Game::Game()
@@ -62,18 +67,22 @@ void Game::init(const char *title, const int xpos, int ypos, int width, int heig
 
 	assets->add_font("gilsans", "GIL_____.TTF", 18);
 
-	tile_map = new GameObjects::TileMap(glm::vec2(0, 0), "assets/data/testMap.xml", 32, 3);
-	player = new GameObjects::Player(glm::vec2(640, 640), 64, 64, 1, 3);
+	tile_map = new DataLoads::LTileMap("test_map", glm::vec2(), 3.0f, DEBUG);
+	tile_map->load("assets/data/test_map2.xml");
+
+	player = new GameObjects::Player(glm::vec2(640, 640), 64, 64, 1.0f, 18);
+
 
 	Game::camera.w = tile_map->map_width * tile_map->scaled_size - SCREEN_WIDTH;
 	Game::camera.h = tile_map->map_height * tile_map->scaled_size - SCREEN_HEIGHT;
 
 	SDL_Color white = { 255, 255, 255, 255 };
 
-//	const auto daddysgroove = Mix_LoadMUS("assets/audio/daddysgroove.mp3");
-//	Mix_PlayMusic(daddysgroove, -1);
+	//const auto daddysgroove = Mix_LoadMUS("assets/audio/daddysgroove.mp3");
+	//Mix_PlayMusic(daddysgroove, -1);
 
 	Manager::add_group_to_system(group_map);
+	Manager::add_group_to_system(group_colliders);
 	Manager::add_group_to_system(group_players);
 }
 
@@ -95,7 +104,7 @@ void Game::handle_events()
 void Game::update() 
 {
 	Manager::refresh();
-	std::cout << "camera: " << camera.x << ", " << camera.y << std::endl;
+	CollisionWorld::refresh();
 	Manager::update();
 }
 

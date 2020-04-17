@@ -91,16 +91,18 @@ bool GameObject::is_render_paused() const
 	return render_paused_;
 }
 
-void GameObject::add_update_command(Command * command) 
+Command* GameObject::add_update_command(Command * command) 
 {
 	std::unique_ptr<Command> u_ptr(command);
 	update_commands_.push_back(std::move(u_ptr));
+	return u_ptr.get();
 }
 
-void GameObject::add_render_command(Command * command)
+Command* GameObject::add_render_command(Command * command)
 {
 	std::unique_ptr<Command> r_ptr(command);
 	render_commands_.push_back(std::move(r_ptr));
+	return r_ptr.get();
 }
 
 const std::vector<std::unique_ptr<Command>>* GameObject::get_render_commands() const

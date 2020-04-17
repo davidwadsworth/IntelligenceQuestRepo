@@ -3,20 +3,26 @@
 #include <SDL.h>
 #include "game_object_tile_map.h"
 #include "data_load.h"
+#include "game_object_collision_map.h"
 
 namespace DataLoads
 {
 	class LTileMap : public DataLoad
 	{
 	public:
-		LTileMap(GameObjects::TileMap * tile_map, int map_scale, int tile_size);
+		LTileMap(std::string tex_id, glm::vec2 position, float scale, bool debug);
 		~LTileMap();
 
+		int scaled_size, map_width, map_height;
+
 		void load(const char* path) override;
-		void add_tile(int src_x, int src_y, int x, int y, int rots, SDL_RendererFlip flp);
 	private:
 		GameObjects::TileMap * tile_map_;
-		int scaled_size_;
+		GameObjects::CollisionMap * collision_map_;
+		std::string tex_id_;
+		glm::vec2 position_;
+		bool debug_;
 		int tile_size_;
+		float scale_;
 	};
 }

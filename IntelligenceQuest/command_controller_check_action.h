@@ -5,6 +5,7 @@ namespace Commands
 {
 	class CheckAction : public Command
 	{
+		bool is_pressed_;
 	public:
 		CheckAction();
 		~CheckAction();

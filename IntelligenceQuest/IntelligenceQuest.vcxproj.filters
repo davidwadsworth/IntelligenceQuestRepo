@@ -57,6 +57,24 @@
     <Filter Include="Data Loads\Source Files">
       <UniqueIdentifier>{90d15eab-4ad6-4d8c-95f5-5889e1697866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Colliders">
+      <UniqueIdentifier>{56593a19-24a1-4ab6-b2e7-c536a1fb814d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colliders\Header Files">
+      <UniqueIdentifier>{1a88d470-1dd3-4199-abc3-ac98060bf229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colliders\Source Files">
+      <UniqueIdentifier>{6b2f1ad9-15d6-4849-900b-4c3658463e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms and Data Structures">
+      <UniqueIdentifier>{b17d3c16-ae1d-41a2-9007-be041df1d572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms and Data Structures\Header Files">
+      <UniqueIdentifier>{34adc26c-40cc-4e4d-9bbc-377100a7fcc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms and Data Structures\Source Files">
+      <UniqueIdentifier>{b72f0a19-4c33-4871-a2f6-0451851a8bbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -110,9 +128,6 @@
     <ClInclude Include="command_movement_animation.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="command_static_render.h">
-      <Filter>Commands\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="command.h">
       <Filter>Commands</Filter>
     </ClInclude>
@@ -140,9 +155,6 @@
     <ClInclude Include="components.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="game_object.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="game_object_player.h">
       <Filter>Game Objects\Header Files</Filter>
     </ClInclude>
@@ -157,6 +169,42 @@
     </ClInclude>
     <ClInclude Include="data_load_tiles.h">
       <Filter>Data Loads\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="collider_circle.h">
+      <Filter>Colliders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collider.h">
+      <Filter>Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object_collision_map.h">
+      <Filter>Game Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_check_collision.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collision_world.h">
+      <Filter>Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="unruly.h">
+      <Filter>Algorithms and Data Structures\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sorting.h">
+      <Filter>Algorithms and Data Structures\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quad_tree.h">
+      <Filter>Algorithms and Data Structures\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collider_polygon.h">
+      <Filter>Colliders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_static_render.h">
+      <Filter>Commands\Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,14 +271,8 @@
     <ClCompile Include="component_movement.cpp">
       <Filter>Components\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component_collision.cpp">
-      <Filter>Components\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="component_animation.cpp">
       <Filter>Components\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game_object.cpp">
-      <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="game_object_player.cpp">
       <Filter>Game Objects\Source Files</Filter>
@@ -244,6 +286,33 @@
     <ClCompile Include="data_load_tiles.cpp">
       <Filter>Data Loads\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_object.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="collider_circle.cpp">
+      <Filter>Colliders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object_collision_map.cpp">
+      <Filter>Game Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_check_collision.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collision_world.cpp">
+      <Filter>Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="quad_tree.cpp">
+      <Filter>Algorithms and Data Structures\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collider_polygon.cpp">
+      <Filter>Colliders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collider.cpp">
+      <Filter>Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="component_collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="assets\data\contexts.xml">
@@ -253,6 +322,9 @@
       <Filter>Assets\Data</Filter>
     </Xml>
     <Xml Include="assets\data\testMap.xml">
+      <Filter>Assets\Data</Filter>
+    </Xml>
+    <Xml Include="assets\data\test_map2.xml">
       <Filter>Assets\Data</Filter>
     </Xml>
   </ItemGroup>

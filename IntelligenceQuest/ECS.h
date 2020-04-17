@@ -90,7 +90,7 @@ class Manager
 	class System
 	{
 	public:
-		static std::vector<GameObject*> organized_game_objects;
+		static std::vector< std::vector<std::unique_ptr<GameObject>>*> organized_game_objects;
 
 		System() = default;
 		~System() = default;
@@ -99,6 +99,7 @@ class Manager
 		static void pause_render();
 
 		static void update();
+
 		static void render();
 	};
 

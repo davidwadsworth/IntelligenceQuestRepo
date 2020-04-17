@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "controller.h"
 
-int Controller::left = 80;
-int Controller::right = 79;
-int Controller::down = 81;
-int Controller::up = 82;
-int Controller::action_1 = 29;
-int Controller::action_2 = 30;
-int Controller::action_3 = 31;
-int Controller::menu = 27;
+int Controller::left = SDL_SCANCODE_LEFT; 
+int Controller::right = SDL_SCANCODE_RIGHT;
+int Controller::down = SDL_SCANCODE_DOWN;
+int Controller::up = SDL_SCANCODE_UP; 
+int Controller::action_1 = SDL_SCANCODE_Z;
+int Controller::action_2 = SDL_SCANCODE_X;
+int Controller::action_3 = SDL_SCANCODE_C;
+int Controller::menu = SDL_SCANCODE_Q;
 
 void Controller::set_key(const int key, const std::string key_id)
 {

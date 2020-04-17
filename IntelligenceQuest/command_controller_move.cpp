@@ -4,8 +4,10 @@
 #include "controller.h"
 #include "command_controller_move.h"
 
-Commands::PlayerMove::PlayerMove(Components::Movement * movement)
-	: movement_(movement)
+#define ONE_OVER_SQRT_TWO 0.70710678118
+
+Commands::PlayerMove::PlayerMove(Components::Movement * movement, glm::vec2 force)
+	: movement_(movement), force_(force)
 {}
 Commands::PlayerMove::~PlayerMove() = default;
 
@@ -13,19 +15,23 @@ void Commands::PlayerMove::execute()
 {
 	float x = 0, y = 0;
 
-	if (Game::keyboard_handler.checkKeyState(Controller::right)) x++;
-	if (Game::keyboard_handler.checkKeyState(Controller::left)) x--;
-	if (Game::keyboard_handler.checkKeyState(Controller::down)) y++;
-	if (Game::keyboard_handler.checkKeyState(Controller::up)) y--;
+	if (Game::keyboard_handler.check_key_state(Controller::right)) x++;
+	if (Game::keyboard_handler.check_key_state(Controller::left)) x--;
+	if (Game::keyboard_handler.check_key_state(Controller::down)) y++;
+	if (Game::keyboard_handler.check_key_state(Controller::up)) y--;
 
 	if (x != 0 && y != 0)
 	{
-		const auto diagonal_vel = (movement_->speed - static_cast<int>(movement_->speed) / 3) / movement_->speed;
- 		
-		x *= diagonal_vel;
-		y *= diagonal_vel;
-	}
+		//const auto diagonal_vel = (adjusted_speed - static_cast<int>(adjusted_speed) / 3) / adjusted_speed;
+		
+		//std::cout << "diagonal: " << Game::camera.x << ", " << Game::camera.y << std::endl;
 
-	movement_->velocity.x = x;
-	movement_->velocity.y = y;
+		x *= ONE_OVER_SQRT_TWO;
+		y *= ONE_OVER_SQRT_TWO;
+	}
+	//else
+		//std::cout << "cardigan: " << Game::camera.x << ", " << Game::camera.y << std::endl;
+
+	movement_->force.x += x * force_.x;
+	movement_->force.y += y * force_.y;
 }
