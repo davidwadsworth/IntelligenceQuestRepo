@@ -1,7 +1,7 @@
 #pragma once
 #include "command.h"
 
-namespace Commands
+namespace ControllerCommands
 {
 	class CheckAction : public Command
 	{

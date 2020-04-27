@@ -1,9 +1,11 @@
+#include "stdafx.h"
 #include "collider_boundary.h"
 
 glm::vec2 Colliders::Boundary::find_perpendicular_line(Collider * col, glm::vec2 position)
 {
-	//TODO
-	return glm::vec2();
+	auto line = glm::normalize(vertices_[0] - vertices_[1]);
+
+	return glm::vec2(line.x, -line.y);
 }
 
 glm::vec2 Colliders::Boundary::support(glm::vec2 direction)

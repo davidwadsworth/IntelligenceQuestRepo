@@ -6,12 +6,12 @@
 
 #define ONE_OVER_SQRT_TWO 0.70710678118
 
-Commands::PlayerMove::PlayerMove(Components::Movement * movement, glm::vec2 force)
-	: movement_(movement), force_(force)
+ControllerCommands::Move::Move(Components::Movement * movement)
+	: movement_(movement)
 {}
-Commands::PlayerMove::~PlayerMove() = default;
+ControllerCommands::Move::~Move() = default;
 
-void Commands::PlayerMove::execute()
+void ControllerCommands::Move::execute()
 {
 	float x = 0, y = 0;
 
@@ -32,6 +32,6 @@ void Commands::PlayerMove::execute()
 	//else
 		//std::cout << "cardigan: " << Game::camera.x << ", " << Game::camera.y << std::endl;
 
-	movement_->force.x += x * force_.x;
-	movement_->force.y += y * force_.y;
+	movement_->velocity.x = x;
+	movement_->velocity.y = y;
 }

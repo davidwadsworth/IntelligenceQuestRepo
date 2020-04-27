@@ -1,4 +1,6 @@
 #pragma once
+#include "collider.h"
+#include <vector>
 
 namespace Sorts
 {
@@ -19,6 +21,28 @@ namespace Sorts
 			arr[j + 1] = key;
 		}
 	}
+
+	static void sort_colliders(std::vector<Collider*> collision_objs, Collider * collider)
+	{
+		int i, j;
+		Collider * key;
+
+		for (i = 1; i < collision_objs.size(); i++)
+		{
+			key = collision_objs[i];
+			j = i - 1;
+
+			while (j >= 0 &&
+				glm::dot(collision_objs[j]->get_center(), collider->get_center()) > glm::dot(key->get_center(), collider->get_center()))
+			{
+				collision_objs[j + 1] = collision_objs[j];
+				j = j - 1;
+			}
+
+			collision_objs[j + 1] = key;
+		}
+	}
+
 
 	template<class T>
 	class merge_sort

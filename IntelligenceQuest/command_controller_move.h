@@ -2,15 +2,14 @@
 #include "command.h"
 #include "component_movement.h"
 
-namespace Commands
+namespace ControllerCommands
 {
-	class PlayerMove : public Command
+	class Move : public Command
 	{
 		Components::Movement * movement_;
-		glm::vec2 force_;
 	public:
-		PlayerMove(Components::Movement * movement, glm::vec2 force);
-		~PlayerMove();
+		Move(Components::Movement * movement);
+		~Move();
 
 		void execute() override;
 	};

@@ -116,9 +116,6 @@
     <ClInclude Include="command_controller_pause.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="command_dynamic_render.h">
-      <Filter>Commands\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="command_frame_animation.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
@@ -203,8 +200,14 @@
     <ClInclude Include="collider_polygon.h">
       <Filter>Colliders\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="command_static_render.h">
-      <Filter>Commands\Source Files</Filter>
+    <ClInclude Include="collider_boundary.h">
+      <Filter>Colliders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_render_static.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_render_dynamic.h">
+      <Filter>Commands\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,9 +244,6 @@
     <ClCompile Include="command_controller_pause.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="command_dynamic_render.cpp">
-      <Filter>Commands\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="command_frame_animation.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
@@ -251,9 +251,6 @@
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="command_movement_animation.cpp">
-      <Filter>Commands\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="command_static_render.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="component_ui_label.cpp">
@@ -312,6 +309,15 @@
     </ClCompile>
     <ClCompile Include="component_collision.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collider_boundary.cpp">
+      <Filter>Colliders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_render_static.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_render_dynamic.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

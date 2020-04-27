@@ -1,13 +1,13 @@
 #include "stdafx.h"
-#include "command_dynamic_render.h"
+#include "command_render_dynamic.h"
 
-Commands::DynamicRender::DynamicRender(Components::Render* render, Components::Transform* transform)
+RenderCommands::Dynamic::Dynamic(Components::Render* render, Components::Transform* transform)
 	: render_(render), transform_(transform)
 {}
 
-Commands::DynamicRender::~DynamicRender() = default;
+RenderCommands::Dynamic::~Dynamic() = default;
 
-void Commands::DynamicRender::execute()
+void RenderCommands::Dynamic::execute()
 {
 	render_->dest->w = static_cast<int>(transform_->width * transform_->scale);
 	render_->dest->h = static_cast<int>(transform_->height * transform_->scale);

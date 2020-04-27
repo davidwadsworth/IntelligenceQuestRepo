@@ -3,12 +3,12 @@
 #include "controller.h"
 #include "collision_world.h"
 
-Commands::CheckAction::CheckAction()
+ControllerCommands::CheckAction::CheckAction()
 	: is_pressed_(false)
 {}
-Commands::CheckAction::~CheckAction() = default;
+ControllerCommands::CheckAction::~CheckAction() = default;
 
-void Commands::CheckAction::execute()
+void ControllerCommands::CheckAction::execute()
 {
 	if (Game::keyboard_handler.check_key_state(Controller::action_1))
 	{

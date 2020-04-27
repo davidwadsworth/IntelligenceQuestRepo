@@ -53,6 +53,11 @@ glm::vec2 Collider::get_center()
 	return *position_ + offset_;
 }
 
+glm::vec2 Collider::get_offset() const
+{
+	return offset_;
+}
+
 bool Collider::collide(Collider * col)
 {
 	auto i = 0;

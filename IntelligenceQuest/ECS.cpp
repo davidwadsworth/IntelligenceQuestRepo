@@ -88,6 +88,11 @@ Entity & Manager::add_entity()
 	return *e;
 }
 
+Manager::System::~System()
+{
+	organized_game_objects.clear();
+};
+
 void Manager::System::pause_update()
 {
 	for (auto group : System::organized_game_objects)

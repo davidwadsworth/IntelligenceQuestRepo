@@ -93,7 +93,7 @@ class Manager
 		static std::vector< std::vector<std::unique_ptr<GameObject>>*> organized_game_objects;
 
 		System() = default;
-		~System() = default;
+		~System();
 
 		static void pause_update();
 		static void pause_render();

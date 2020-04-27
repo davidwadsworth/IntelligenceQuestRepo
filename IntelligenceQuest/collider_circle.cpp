@@ -14,5 +14,5 @@ glm::vec2 Colliders::Circle::support(glm::vec2 direction)
 
 glm::vec2 Colliders::Circle::find_perpendicular_line(Collider * col, glm::vec2 position)
 {
-	return support(position - get_center());
+	return glm::normalize(support(position - get_center()));
 }
