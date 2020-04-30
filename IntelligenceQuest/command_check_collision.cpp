@@ -3,8 +3,8 @@
 #include "collision_world.h"
 #include "sorting.h"
 
-Commands::CheckCollision::CheckCollision(Entity * entity, Components::Collision* collider, Components::Movement * movement, Components::Transform* transform)
-	: CollisionSubscriber(entity), collider_(collider), movement_(movement), transform_(transform)
+Commands::CheckCollision::CheckCollision(Entity * entity, Components::Collision* collider, Components::Physics * physics, Components::Transform* transform)
+	: CollisionSubscriber(entity), collider_(collider), physics_(physics), transform_(transform)
 {}
 
 Commands::CheckCollision::~CheckCollision() = default;
@@ -33,7 +33,10 @@ void Commands::CheckCollision::execute()
 	for (auto col_b : colliding_entities)
 	{
 		auto piercing_vec = col_b->find_perpendicular_line(col_a, transform_->prev_position + col_a->get_offset());
-		transform_->position += piercing_vec * glm::abs(transform_->prev_position - transform_->position); // piercing vec * velocity and speed of the previous move
+
+	//	std::cout << piercing_vec.x << ", " << piercing_vec.y << std::endl;
+
+		transform_->position += piercing_vec * physics_->prev_force * Game::delta_time; // piercing vec * velocity and speed of the previous move
 	}
 
 }

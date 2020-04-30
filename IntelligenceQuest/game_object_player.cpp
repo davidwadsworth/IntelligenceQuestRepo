@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "game_object_player.h"
-#include "command_movement.h"
+#include "command_force.h"
 #include "command_camera.h"
 #include "command_frame_animation.h"
 #include "command_movement_animation.h"
@@ -17,15 +17,16 @@ GameObjects::Player::Player(glm::vec2 position, int player_width, int player_hei
 	transform = &entity->add_component<Components::Transform>(position_.x, position_.y, player_width_, player_height_, scale_);
 	render = &entity->add_component<Components::Render>("player", new SDL_Rect{ static_cast<int>(position_.x), static_cast<int>(position_.y), static_cast<int>(player_width_ * scale_), static_cast<int>(player_height_ * scale_) }, new SDL_Rect{0, 0, player_width_, player_height_ });
 	collision = &entity->add_component<Components::Collision>("player", new Colliders::Circle(&transform->position, glm::vec2(player_width_ * scale_ / 2.0f, player_height_ * scale_ / 2.0f), player_width_ / 2.0f));
+	physics = &entity->add_component<Components::Physics>(1);
 	frame_animation = &entity->add_component<Components::FrameAnimation>();
 	movement = &entity->add_component<Components::Movement>(speed_);
 
-	this->add_update_command(new ControllerCommands::Move(movement));
+	this->add_update_command(new ControllerCommands::Move(movement, physics));
 	this->add_update_command(new ControllerCommands::CheckAction());
 	this->add_update_command(new ControllerCommands::Pause());
-	this->add_update_command(new Commands::MovementAnimation(movement, frame_animation));
-	this->add_update_command(new Commands::CheckCollision(entity, collision, movement, transform));
-	this->add_update_command(new Commands::Movement(movement, transform));
+	this->add_update_command(new Commands::MovementAnimation(physics, frame_animation));
+	this->add_update_command(new Commands::CheckCollision(entity, collision, physics, transform));
+	this->add_update_command(new Commands::Force(physics, transform));
 	this->add_update_command(new Commands::Camera(transform));
 	this->add_update_command(new Commands::FrameAnimation(frame_animation, render));
 

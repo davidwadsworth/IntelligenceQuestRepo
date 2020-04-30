@@ -172,7 +172,7 @@
     <ClInclude Include="command_controller_pause.h" />
     <ClInclude Include="command_render_dynamic.h" />
     <ClInclude Include="command_frame_animation.h" />
-    <ClInclude Include="command_movement.h" />
+    <ClInclude Include="command_force.h" />
     <ClInclude Include="command_movement_animation.h" />
     <ClInclude Include="command_render_static.h" />
     <ClInclude Include="components.h" />
@@ -194,6 +194,7 @@
     <ClInclude Include="game_object_collision_map.h" />
     <ClInclude Include="game_object_player.h" />
     <ClInclude Include="game_object_tile_map.h" />
+    <ClInclude Include="component_physics.h" />
     <ClInclude Include="sorting.h" />
     <ClInclude Include="keyboard_handler.h" />
     <ClInclude Include="quad_tree.h" />
@@ -217,12 +218,13 @@
     <ClCompile Include="command_controller_pause.cpp" />
     <ClCompile Include="command_render_dynamic.cpp" />
     <ClCompile Include="command_frame_animation.cpp" />
-    <ClCompile Include="command_movement.cpp" />
+    <ClCompile Include="command_force.cpp" />
     <ClCompile Include="command_movement_animation.cpp" />
     <ClCompile Include="command_render_static.cpp" />
     <ClCompile Include="component_animation.cpp" />
     <ClCompile Include="component_collision.cpp" />
     <ClCompile Include="component_movement.cpp" />
+    <ClCompile Include="component_physics.cpp" />
     <ClCompile Include="component_render.cpp" />
     <ClCompile Include="component_text_box.cpp" />
     <ClCompile Include="component_transform.cpp" />

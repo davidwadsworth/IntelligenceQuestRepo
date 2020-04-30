@@ -3,31 +3,26 @@
 
 glm::vec2 Colliders::Boundary::find_perpendicular_line(Collider * col, glm::vec2 position)
 {
-	auto line = glm::normalize(vertices_[0] - vertices_[1]);
-
+	auto line = glm::normalize(vertices_[1] - vertices_[0]);
 	return glm::vec2(line.x, -line.y);
 }
 
 glm::vec2 Colliders::Boundary::support(glm::vec2 direction)
 {
-	auto furthest_distance = std::numeric_limits<float>::lowest();
-	auto furthest_vertex = glm::vec2();
+	auto p1 = vertices_[0] + get_position();
+	auto p2 = vertices_[1] + get_position();
 
-	for (auto v : vertices_)
-	{
-		auto distance = glm::dot(v + get_center(), direction);
-		if (distance > furthest_distance)
-		{
-			furthest_distance = distance;
-			furthest_vertex = v + get_center();
-		}
-	}
+	auto p1_distance = glm::dot(p1, direction);
+	auto p2_distance = glm::dot(p2, direction);
 
-	return furthest_vertex;
+	if (p1_distance > p2_distance)
+		return p1;
+	else
+		return p2;
 }
 
 Colliders::Boundary::Boundary(glm::vec2 * position, std::array<glm::vec2, MAX_BOUNDARY> vertices)
-	: Collider(position, glm::abs(vertices[0] - vertices[1]) / 2.0f)
+	: Collider(position, glm::abs(vertices[1] - vertices[0]) / 2.0f), vertices_(vertices)
 {}
 
 Colliders::Boundary::~Boundary() = default;

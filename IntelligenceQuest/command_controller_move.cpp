@@ -4,10 +4,10 @@
 #include "controller.h"
 #include "command_controller_move.h"
 
-#define ONE_OVER_SQRT_TWO 0.70710678118
+constexpr auto ONE_OVER_SQRT_TWO = 0.70710678118f;
 
-ControllerCommands::Move::Move(Components::Movement * movement)
-	: movement_(movement)
+ControllerCommands::Move::Move(Components::Movement * movement, Components::Physics* physics)
+	: movement_(movement), physics_(physics)
 {}
 ControllerCommands::Move::~Move() = default;
 
@@ -22,16 +22,10 @@ void ControllerCommands::Move::execute()
 
 	if (x != 0 && y != 0)
 	{
-		//const auto diagonal_vel = (adjusted_speed - static_cast<int>(adjusted_speed) / 3) / adjusted_speed;
-		
-		//std::cout << "diagonal: " << Game::camera.x << ", " << Game::camera.y << std::endl;
-
 		x *= ONE_OVER_SQRT_TWO;
 		y *= ONE_OVER_SQRT_TWO;
 	}
-	//else
-		//std::cout << "cardigan: " << Game::camera.x << ", " << Game::camera.y << std::endl;
 
-	movement_->velocity.x = x;
-	movement_->velocity.y = y;
+	physics_->direction = glm::vec2(x, y);
+	physics_->force += movement_->speed;
 }

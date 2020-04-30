@@ -8,11 +8,11 @@ glm::vec2 Colliders::Polygon::support(glm::vec2 direction)
 
 	for (auto v : vertices_)
 	{
-		auto distance = glm::dot(v + get_center(), direction);
+		auto distance = glm::dot(v + get_position(), direction);
 		if (distance > furthest_distance)
 		{
 			furthest_distance = distance;
-			furthest_vertex = v + get_center();
+			furthest_vertex = v + get_position();
 		}
 	}
 
@@ -28,14 +28,57 @@ glm::vec2 Colliders::Polygon::find_center(std::vector<glm::vec2> vertices)
 	return center / static_cast<float>(vertices.size());
 }
 
-Colliders::Polygon::Polygon(glm::vec2 * position,std::vector<glm::vec2> vertices)
-	: Collider(position, find_center(vertices)), vertices_(vertices) 
+void Colliders::Polygon::find_closest_distance(float& closest_distance, glm::vec2& closest_vertex, glm::vec2 p1, glm::vec2 p2, glm::vec2 direction, int index)
+{
+
+	auto p = p2 - p1;
+	auto p_magnitude = p.x * p.x + p.y * p.y;
+
+	if (p_magnitude > shortest_magnitude_ + 0.5f || p_magnitude < shortest_magnitude_ - 0.5f)
+	{
+		auto du = shortest_distance_ * glm::normalize(p);
+		find_closest_distance(closest_distance, closest_vertex, p1, p1 + du, direction, vertices_.size()); // check if closest distance then exit
+		find_closest_distance(closest_distance, closest_vertex, p2 - du, p2, direction, index);
+		return;
+	}
+
+	auto distance = glm::dot(p2, direction) + glm::dot(p1, direction);
+
+	if (distance > closest_distance)
+	{
+		closest_distance = distance;
+		closest_vertex = p;
+	}
+
+	if (index >= vertices_.size())
+		return;
+
+	p1 = vertices_[index];
+	p2 = vertices_[0];
+
+	if (++index < vertices_.size())
+		p2 = vertices_[index];
+
+	find_closest_distance(closest_distance, closest_vertex, p1, p2, direction, index);
+}
+
+Colliders::Polygon::Polygon(glm::vec2 * position, std::vector<glm::vec2> vertices)
+	: Collider(position), vertices_(vertices), shortest_magnitude_()
+{
+	auto line = vertices_[1] - vertices_[0];
+	shortest_magnitude_ = line.x * line.x + line.y * line.y;
+	shortest_distance_ = glm::sqrt(shortest_magnitude_);
+
+	set_offset(find_center(vertices_));
+	vertices_.shrink_to_fit();
+}
+
+Colliders::Polygon::Polygon(glm::vec2 * position, glm::vec2 offset, std::vector<glm::vec2> vertices)
+	: Collider(position, offset), vertices_(vertices), shortest_magnitude_()
 {
 	vertices_.shrink_to_fit();
-
-	if (vertices_.size() < 3)
-		SDL_Log("Invalid Polygon");
 }
+
 
 Colliders::Polygon::~Polygon() = default;
 
@@ -66,46 +109,13 @@ Colliders::Polygon::~Polygon() = default;
 glm::vec2 Colliders::Polygon::find_perpendicular_line(Collider * col, glm::vec2 position)
 {
 	auto closest_distance = -FLT_MAX;
-	auto A = glm::vec2(); // closest vertex
-	auto closest_index = 0;
+	auto closest_vertex = glm::vec2(); 
+	
+	auto direction = position - this->get_center();
 
-	auto center = this->get_center();
+	find_closest_distance(closest_distance, closest_vertex, vertices_[0], vertices_[1], direction, 1);
 
-	auto direction = position - center;
+	closest_vertex = glm::normalize(closest_vertex);
 
-	for (auto i = 0; i < vertices_.size(); i++)
-	{
-		auto distance = glm::dot(vertices_[i] + center, direction);
-		if (distance > closest_distance)
-		{
-			closest_distance = distance;
-			A = vertices_[i];
-			closest_index = i;
-		}
-	}
-
-	auto B = vertices_[(closest_index + 1) < vertices_.size() ? closest_index + 1 : 0];
-	auto C = vertices_[(closest_index - 1) >= 0 ? closest_index - 1 : vertices_.size() - 1];
-
-	auto slope = A.y / A.x;
-
-	auto fO = direction.x * slope - direction.y;
-	auto fC = C.x * slope - C.y;
-	auto fB = B.x * slope - B.y;
-
-	auto CA_perpendicular = (fO < fC && fO > 0.0f) || (fO > fC && fO < 0.0f);
-	auto AB_perpendicular = (fO < fB && fO > 0.0f) || (fO > fB && fO < 0.0f);
-
-	if (CA_perpendicular)
-	{
-		auto CA = glm::normalize(A - C);
-		return glm::vec2(CA.y, -CA.x); // return the perpendicular vector ⊥CA
-	}
-	if (AB_perpendicular)
-	{
-		auto AB = glm::normalize(B - A);
-		return glm::vec2(AB.y, -AB.x); // return the perpendicular vector ⊥AB
-	}
-
-	return glm::vec2(A.x / abs(A.x), A.y / abs(A.y)); // return the edge vector 
+	return glm::vec2(closest_vertex.y, -closest_vertex.x);
 }

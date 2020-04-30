@@ -1,8 +1,8 @@
 #pragma once
 #include "game_object.h"
 #include "component_animation.h"
+#include "component_physics.h"
 #include "component_movement.h"
-
 
 namespace  GameObjects
 {
@@ -17,6 +17,7 @@ namespace  GameObjects
 		Components::Collision* collision;
 		Components::FrameAnimation* frame_animation;
 		Components::Movement * movement;
+		Components::Physics * physics;
 		Entity* entity;
 		Player(glm::vec2 position, int player_width, int player_height, float scale, float speed);
 		~Player();
