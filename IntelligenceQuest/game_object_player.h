@@ -11,15 +11,16 @@ namespace  GameObjects
 		glm::vec2 position_;
 		int player_width_, player_height_;
 		float scale_, speed_;
+		QuadTree* collision_tree_;
 	public:
-		Components::Transform * transform;
-		Components::Render * render;
+		Components::Transform* transform;
+		Components::Render* render;
 		Components::Collision* collision;
 		Components::FrameAnimation* frame_animation;
-		Components::Movement * movement;
-		Components::Physics * physics;
+		Components::Movement* movement;
+		Components::Physics* physics;
 		Entity* entity;
-		Player(glm::vec2 position, int player_width, int player_height, float scale, float speed);
+		Player(std::string tex, QuadTree* collision_tree, glm::vec2 position, int player_width, int player_height, float scale, float speed);
 		~Player();
 	};
 }

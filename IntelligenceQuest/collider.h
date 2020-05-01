@@ -5,9 +5,13 @@
 #include <vec2.hpp>
 #include <array>
 #include "component_transform.h"
+#include "quad_tree.h"
 
 /*
  Kenton Hamaluik wrote all this. Thank you Kenton 
+
+ After testing Kenton Hamaluiks code I have realized he is not as brilliant as I first thought,
+	he still saved several hours of my time though and I thank him greatly.
 */
 
 constexpr std::size_t MAX_SIMPLEX = 3;
@@ -36,6 +40,7 @@ public:
 	glm::vec2 get_center();
 	glm::vec2 get_position();
 	glm::vec2 get_offset() const;
+	
 	void set_offset(glm::vec2 offset);
 
 	bool collide(Collider * col);

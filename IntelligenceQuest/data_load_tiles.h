@@ -10,13 +10,14 @@ namespace DataLoads
 	class LTileMap : public DataLoad
 	{
 	public:
-		LTileMap(std::string tex_id, glm::vec2 position, float scale, bool debug);
+		LTileMap(std::string tex_id, QuadTree** collision_tree, glm::vec2 position, float scale, bool debug);
 		~LTileMap();
 
 		int scaled_size, map_width, map_height;
 
 		void load(const char* path) override;
 	private:
+		QuadTree** collision_tree_;
 		GameObjects::TileMap * tile_map_;
 		GameObjects::CollisionMap * collision_map_;
 		std::string tex_id_;

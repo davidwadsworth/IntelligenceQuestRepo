@@ -4,14 +4,13 @@
 #include <SDL_mixer.h>
 #include "game_object_player.h"
 #include "game_object_tile_map.h"
-#include "collision_world.h"
 
 #define DEBUG true
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
-SDL_Rect Game::camera = SDL_Rect();
+GameObjects::Camera* Game::camera = nullptr;
 AssetManager* Game::assets = new AssetManager();
 
 KeyboardHandler Game::keyboard_handler = KeyboardHandler();
@@ -62,21 +61,16 @@ void Game::init(const char *title, const int xpos, int ypos, int width, int heig
 
 	assets->add_texture("test_map", "assets/images/tile_set_2.png");
 	assets->add_texture("player", "assets/images/flesh_child_full.png");	
-	assets->add_texture("projectile", "assets/images/rock.png");
-	assets->add_texture("textbox", "assets/images/textbox.png");
+	
+	camera = new GameObjects::Camera(glm::vec2(0));
 
-	assets->add_font("gilsans", "GIL_____.TTF", 18);
-
-	tile_map = new DataLoads::LTileMap("test_map", glm::vec2(), 3.0f, DEBUG);
+	tile_map = new DataLoads::LTileMap("test_map", &collision_tree, glm::vec2(), 3.0f, DEBUG);
 	tile_map->load("assets/data/test_map2.xml");
 
-	player = new GameObjects::Player(glm::vec2(640, 640), 64, 64, 1.0f, 18);
+	camera->boundary_width = tile_map->map_width * tile_map->scaled_size - Game::SCREEN_WIDTH;
+	camera->boundary_height = tile_map->map_height * tile_map->scaled_size - Game::SCREEN_HEIGHT;
 
-
-	Game::camera.w = tile_map->map_width * tile_map->scaled_size - SCREEN_WIDTH;
-	Game::camera.h = tile_map->map_height * tile_map->scaled_size - SCREEN_HEIGHT;
-
-	SDL_Color white = { 255, 255, 255, 255 };
+	player = new GameObjects::Player("player", collision_tree, glm::vec2(640, 640), 64, 64, 1.0f, 18);
 
 	//const auto daddysgroove = Mix_LoadMUS("assets/audio/daddysgroove.mp3");
 	//Mix_PlayMusic(daddysgroove, -1);
@@ -84,6 +78,7 @@ void Game::init(const char *title, const int xpos, int ypos, int width, int heig
 	Manager::add_group_to_system(group_map);
 	Manager::add_group_to_system(group_colliders);
 	Manager::add_group_to_system(group_players);
+	Manager::add_group_to_system(group_camera);
 }
 
 void Game::handle_events()
@@ -104,7 +99,6 @@ void Game::handle_events()
 void Game::update() 
 {
 	Manager::refresh();
-	CollisionWorld::refresh();
 	Manager::update();
 }
 
@@ -117,6 +111,15 @@ void Game::render()
 
 void Game::clean()
 {
+	collision_tree->delete_map();
+
+	delete collision_tree;
+	collision_tree = nullptr;
+	delete assets;
+	assets = nullptr;
+	delete tile_map;
+	tile_map = nullptr;
+
 	SDL_DestroyWindow(window);
 	window = nullptr;
 	SDL_DestroyRenderer(renderer);

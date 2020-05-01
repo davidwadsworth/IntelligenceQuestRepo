@@ -19,8 +19,8 @@ void GameObjects::TileMap::render()
 {
 	if (is_render_paused()) return;
 
-	const unsigned col_start = Game::camera.y / scaled_size_;
-	const unsigned row_start = Game::camera.x / scaled_size_;
+	const unsigned col_start = Game::camera->transform->position.y / scaled_size_;
+	const unsigned row_start = Game::camera->transform->position.x / scaled_size_;
 
 	auto col_end = col_start + Game::SCREEN_HEIGHT / scaled_size_ + (Game::SCREEN_HEIGHT % scaled_size_ != 0);
 	col_end = col_end == map_height_ ? col_end - 1 : col_end;

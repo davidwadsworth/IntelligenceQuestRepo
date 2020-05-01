@@ -7,8 +7,8 @@
 
 extern Manager manager;
 
-DataLoads::LTileMap::LTileMap(std::string tex_id, glm::vec2 position, float scale, bool debug)
-	: tex_id_(tex_id), position_(position), tile_size_ (0), scaled_size(0), scale_(scale), tile_map_(nullptr), debug_(debug), collision_map_(nullptr)
+DataLoads::LTileMap::LTileMap(std::string tex_id, QuadTree** collision_tree, glm::vec2 position, float scale, bool debug)
+	: tex_id_(tex_id), collision_tree_(collision_tree), position_(position), tile_size_ (0), scaled_size(0), scale_(scale), tile_map_(nullptr), debug_(debug), collision_map_(nullptr)
 {}
 
 DataLoads::LTileMap::~LTileMap() = default;
@@ -58,7 +58,8 @@ void DataLoads::LTileMap::load(const char * path)
 	layer_node = layer_node->next_sibling();
 	if (layer_node)
 	{
-		collision_map_ = new GameObjects::CollisionMap(tex_id_, position_, map_width, map_height, tile_size_, scale_, debug_);
+		(*collision_tree_) = new QuadTree(position_, map_width * scaled_size, map_height * scaled_size);
+		collision_map_ = new GameObjects::CollisionMap(tex_id_, *collision_tree_, position_, map_width, map_height, tile_size_, scale_, debug_);
 		for (rapidxml::xml_node<> * tile_node = layer_node->first_node("tile"); tile_node; tile_node = tile_node->next_sibling())
 		{
 			const auto scaled_x = atoi(tile_node->first_attribute("x")->value()) * scaled_size;

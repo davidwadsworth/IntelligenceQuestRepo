@@ -122,11 +122,17 @@ void GameObject::register_command(std::string command_id, Command * command)
 
 Command * GameObject::get_command(const std::string command_id)
 {
+	if (registered_commands_.find(command_id) == registered_commands_.end())
+		return nullptr;
+
 	return registered_commands_[command_id].get();
 }
 
 void GameObject::remove_command(const std::string command_id)
 {
+	if (registered_commands_.find(command_id) == registered_commands_.end())
+		return;
+
 	registered_commands_[command_id].get()->is_terminated = true;
 	registered_commands_.erase(command_id);
 }

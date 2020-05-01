@@ -20,6 +20,10 @@ Components::Transform::Transform(float x, float y)
 	position.y = y;
 }
 
+Components::Transform::Transform(glm::vec2 position, int h, int w)
+	: position(position), prev_position(), height(h), width(w), scale(1)
+{}
+
 Components::Transform::Transform(float x, float y, int h, int w, int sc)
 {
 	position.x = x;

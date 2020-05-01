@@ -163,13 +163,13 @@
     <ClInclude Include="animate.h" />
     <ClInclude Include="collider.h" />
     <ClInclude Include="collider_circle.h" />
-    <ClInclude Include="collision_world.h" />
     <ClInclude Include="command.h" />
-    <ClInclude Include="command_camera.h" />
+    <ClInclude Include="command_camera_follow.h" />
     <ClInclude Include="command_check_collision.h" />
     <ClInclude Include="command_controller_check_action.h" />
     <ClInclude Include="command_controller_move.h" />
     <ClInclude Include="command_controller_pause.h" />
+    <ClInclude Include="command_refresh_quad_tree.h" />
     <ClInclude Include="command_render_dynamic.h" />
     <ClInclude Include="command_frame_animation.h" />
     <ClInclude Include="command_force.h" />
@@ -191,6 +191,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="game_object_camera.h" />
     <ClInclude Include="game_object_collision_map.h" />
     <ClInclude Include="game_object_player.h" />
     <ClInclude Include="game_object_tile_map.h" />
@@ -210,12 +211,12 @@
     <ClCompile Include="collider_boundary.cpp" />
     <ClCompile Include="collider_circle.cpp" />
     <ClCompile Include="collider_polygon.cpp" />
-    <ClCompile Include="collision_world.cpp" />
-    <ClCompile Include="command_camera.cpp" />
+    <ClCompile Include="command_camera_follow.cpp" />
     <ClCompile Include="command_check_collision.cpp" />
     <ClCompile Include="command_controller_check_action.cpp" />
     <ClCompile Include="command_controller_move.cpp" />
     <ClCompile Include="command_controller_pause.cpp" />
+    <ClCompile Include="command_refresh_quad_tree.cpp" />
     <ClCompile Include="command_render_dynamic.cpp" />
     <ClCompile Include="command_frame_animation.cpp" />
     <ClCompile Include="command_force.cpp" />
@@ -235,6 +236,7 @@
     <ClCompile Include="ecs.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="game_object_camera.cpp" />
     <ClCompile Include="game_object_collision_map.cpp" />
     <ClCompile Include="game_object_player.cpp" />
     <ClCompile Include="game_object_tile_map.cpp" />

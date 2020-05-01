@@ -1,6 +1,25 @@
 ﻿#include "stdafx.h"
 #include "collider_polygon.h"
 
+Colliders::Polygon::Polygon(glm::vec2 * position, std::vector<glm::vec2> vertices)
+	: Collider(position), vertices_(vertices), shortest_magnitude_()
+{
+	auto line = vertices_[1] - vertices_[0];
+	shortest_magnitude_ = line.x * line.x + line.y * line.y;
+	shortest_distance_ = glm::sqrt(shortest_magnitude_);
+
+	set_offset(find_center(vertices_));
+	vertices_.shrink_to_fit();
+}
+
+Colliders::Polygon::Polygon(glm::vec2 * position, glm::vec2 offset, std::vector<glm::vec2> vertices)
+	: Collider(position, offset), vertices_(vertices), shortest_magnitude_()
+{
+	vertices_.shrink_to_fit();
+}
+
+Colliders::Polygon::~Polygon() = default;
+
 glm::vec2 Colliders::Polygon::support(glm::vec2 direction)
 {
 	auto furthest_distance = std::numeric_limits<float>::lowest();
@@ -28,9 +47,13 @@ glm::vec2 Colliders::Polygon::find_center(std::vector<glm::vec2> vertices)
 	return center / static_cast<float>(vertices.size());
 }
 
+
+/**
+* DO NOT LOAD IN A POLYGON WITH ITS SHORTEST LENGTH MORE THAN TWICE AS SHORT AS ITS LONGEST LENGTH
+*/
+
 void Colliders::Polygon::find_closest_distance(float& closest_distance, glm::vec2& closest_vertex, glm::vec2 p1, glm::vec2 p2, glm::vec2 direction, int index)
 {
-
 	auto p = p2 - p1;
 	auto p_magnitude = p.x * p.x + p.y * p.y;
 
@@ -62,47 +85,8 @@ void Colliders::Polygon::find_closest_distance(float& closest_distance, glm::vec
 	find_closest_distance(closest_distance, closest_vertex, p1, p2, direction, index);
 }
 
-Colliders::Polygon::Polygon(glm::vec2 * position, std::vector<glm::vec2> vertices)
-	: Collider(position), vertices_(vertices), shortest_magnitude_()
-{
-	auto line = vertices_[1] - vertices_[0];
-	shortest_magnitude_ = line.x * line.x + line.y * line.y;
-	shortest_distance_ = glm::sqrt(shortest_magnitude_);
-
-	set_offset(find_center(vertices_));
-	vertices_.shrink_to_fit();
-}
-
-Colliders::Polygon::Polygon(glm::vec2 * position, glm::vec2 offset, std::vector<glm::vec2> vertices)
-	: Collider(position, offset), vertices_(vertices), shortest_magnitude_()
-{
-	vertices_.shrink_to_fit();
-}
-
-
-Colliders::Polygon::~Polygon() = default;
-
 /***
-* assuming this polygon is made of at least three points
-* assuming this polygon is not concave
-*
-* this function finds the closest edge (A) and the neighboring points (B) and (C) based on colliding object position before collision occured (O)
-* B = previous vertex, C = next vertex
-* because the polygon is concave it cannot collide with two edges
-*
-* if the center is along A->B return ⊥AB
-* if the center is along C->A return ⊥CA
-* else the center is exactly between the two edges return O-A and if multiplied by 
-*
-* O
-*
-*    A----------B
-*     \
-*      \
-*       \
-*        C
-*
-* eg. O is closer to a point on line AB than CA return ⊥AB
+* normalizes the polygon into same lengthed vertexes and from those created vertexes checks  
 */
 
 

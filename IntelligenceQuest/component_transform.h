@@ -1,6 +1,6 @@
 #pragma once
 #include <vec2.hpp>
-
+#include "ecs.h"
 
 namespace Components
 {
@@ -17,6 +17,7 @@ namespace Components
 		Transform();
 		explicit Transform(int sc);
 		Transform(float x, float y);
+		Transform(glm::vec2 position, int h, int w);
 		Transform(float x, float y, int h, int w, int sc);
 	};
 }

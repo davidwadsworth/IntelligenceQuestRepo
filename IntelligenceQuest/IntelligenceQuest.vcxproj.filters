@@ -104,9 +104,6 @@
     <ClInclude Include="ecs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="command_camera.h">
-      <Filter>Commands\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="command_controller_check_action.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
@@ -179,9 +176,6 @@
     <ClInclude Include="command_check_collision.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="collision_world.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
     <ClInclude Include="unruly.h">
       <Filter>Algorithms and Data Structures\Header Files</Filter>
     </ClInclude>
@@ -212,6 +206,15 @@
     <ClInclude Include="command_force.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game_object_camera.h">
+      <Filter>Game Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_camera_follow.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_refresh_quad_tree.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -234,9 +237,6 @@
     </ClCompile>
     <ClCompile Include="ecs.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="command_camera.cpp">
-      <Filter>Commands\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="command_controller_check_action.cpp">
       <Filter>Commands\Source Files</Filter>
@@ -295,9 +295,6 @@
     <ClCompile Include="command_check_collision.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="collision_world.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
     <ClCompile Include="quad_tree.cpp">
       <Filter>Algorithms and Data Structures\Source Files</Filter>
     </ClCompile>
@@ -306,9 +303,6 @@
     </ClCompile>
     <ClCompile Include="collider.cpp">
       <Filter>Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="component_collision.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="collider_boundary.cpp">
       <Filter>Colliders\Source Files</Filter>
@@ -323,6 +317,18 @@
       <Filter>Components\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="command_force.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_collision.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object_camera.cpp">
+      <Filter>Game Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_camera_follow.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_refresh_quad_tree.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

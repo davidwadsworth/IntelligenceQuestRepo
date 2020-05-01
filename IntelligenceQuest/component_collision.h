@@ -10,12 +10,14 @@ namespace Components
 	class Collision : public Component
 	{
 		Collider* collider_;
+		QuadTree* collision_tree_;
 	public:
 		std::string tag;
 
-		explicit Collision(std::string t, Collider* collider);
+		explicit Collision(std::string t, QuadTree* collision_tree, Collider* collider);
 		~Collision();
 		
 		Collider* get_collider();
+		QuadTree* get_collision_tree();
 	};
 }
