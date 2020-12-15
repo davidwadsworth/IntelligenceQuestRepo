@@ -1,14 +1,130 @@
-﻿  asset_manager.cpp
-  game_object_player.cpp
-c:\users\dwads\documents\github\intelligencequest\intelligencequest\ecs.h(70): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+﻿  stdafx.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\keyboard_handler.h(27): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\keyboard_handler.h(27): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
+  asset_manager.cpp
+  collider.cpp
+  collider_boundary.cpp
+  collider_circle.cpp
+  collider_polygon.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\collider_polygon.cpp(63): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  command_camera_follow.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\command_camera_follow.cpp(23): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  c:\users\dwads\documents\github\intelligencequest\intelligencequest\game_object_player.cpp(18): note: see reference to function template instantiation 'T &Entity::add_component<Components::Transform,float&,float&,int&,int&,float&>(float &,float &,int &,int &,float &)' being compiled
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\command_camera_follow.cpp(25): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  command_check_collision.cpp
+  command_controller_check_action.cpp
+  command_controller_move.cpp
+  command_controller_pause.cpp
+  command_refresh_quad_tree.cpp
+  command_render_dynamic.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\command_render_dynamic.cpp(14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\command_render_dynamic.cpp(15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  command_frame_animation.cpp
+  command_force.cpp
+  command_movement_animation.cpp
+  command_render_static.cpp
+  component_animation.cpp
+  component_collision.cpp
+  component_movement.cpp
+  component_physics.cpp
+  Generating Code...
+  Compiling...
+  component_render.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\component_render.cpp(18): warning C4244: 'initializing': conversion from 'const double' to 'float', possible loss of data
+  component_text_box.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\component_text_box.cpp(15): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\component_text_box.cpp(16): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  component_transform.cpp
+  component_ui_label.cpp
+  controller.cpp
+  data_load_controller.cpp
+  data_load_tiles.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\data_load_tiles.cpp(32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ecs.cpp
+  game.cpp
+  game_object.cpp
+  game_object_camera.cpp
+  game_object_collision_map.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_collision_map.cpp(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\ecs.h(70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_collision_map.cpp(24): note: see reference to function template instantiation 'T &Entity::add_component<Components::Transform,int,int,int&,int&,float&>(int &&,int &&,int &,int &,float &)' being compiled
           with
           [
               T=Components::Transform
           ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\ecs.h(70): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  game_object_player.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\ecs.h(70): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_player.cpp(18): note: see reference to function template instantiation 'T &Entity::add_component<Components::Transform,float&,float&,int&,int&,float&>(float &,float &,int &,int &,float &)' being compiled
+          with
+          [
+              T=Components::Transform
+          ]
+  game_object_tile_map.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(22): warning C4244: 'initializing': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(22): warning C4244: 'initializing': conversion from 'T' to 'const unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(23): warning C4244: 'initializing': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(23): warning C4244: 'initializing': conversion from 'T' to 'const unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\ecs.h(70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\game_object_tile_map.cpp(41): note: see reference to function template instantiation 'T &Entity::add_component<Components::Transform,float,float,int&,int&,float&>(float &&,float &&,int &,int &,float &)' being compiled
+          with
+          [
+              T=Components::Transform
+          ]
+  intelligence_quest.cpp
+  quad_tree.cpp
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(43): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(74): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(131): warning C4018: '<': signed/unsigned mismatch
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(132): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(143): warning C4018: '<': signed/unsigned mismatch
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(146): warning C4018: '<': signed/unsigned mismatch
+c:\users\dwads\documents\github\intelligencequestrepo\intelligencequest\quad_tree.cpp(166): warning C4018: '<': signed/unsigned mismatch
+  texture_manager.cpp
   Generating Code...
-  IntelligenceQuest.vcxproj -> C:\Users\dwads\Documents\GitHub\IntelligenceQuest\x64\Debug\IntelligenceQuest.exe
+  IntelligenceQuest.vcxproj -> C:\Users\dwads\Documents\GitHub\IntelligenceQuestRepo\x64\Debug\IntelligenceQuest.exe
